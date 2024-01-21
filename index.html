@@ -20,34 +20,20 @@
             padding: 0;
             animation: colorShift 5s infinite alternate;
         }
-        .linktree {
+        .main {
             text-align: center;
-        }
-        .profile-container {
             background-color: #fff;
             border-radius: 15px;
             padding: 20px;
-            display: inline-block;
-            margin-bottom: 20px;
+            margin: 10%;
+            color: #000;
         }
-        .linktree .profile-img {
+        .profile-img {
             width: 300px;
             height: 150px;
-            border-radius: 20%;
             object-fit: scale-down;
         }
-        .linktree .name {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-        .linktree .info-box {
-            background-color: #fff;
-            color: #000;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .linktree .link {
+        .link {
             background-color: #377771;
             color: #fff;
             text-decoration: none;
@@ -56,37 +42,25 @@
             margin-bottom: 10px;
             border-radius: 5px;
         }
-        .linktree .disabled-link {
-            background-color: #808080;
-            color: #fff;
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 20px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            pointer-events: none;
-            opacity: 0.6;
+        .link:hover {
+            background-color: #399b91;
         }
-            .linktree .link, .linktree .disabled-link {
-                width: 90%;
-                font-size: 4vw;
-            }
     </style>
 </head>
 <body>
-    <div class="linktree">
+    <div class="main">
         <div class="profile-container">
             <img class="profile-img" src="codehers-color-logo.png" alt="Profile">
         </div>
         <div class="name">Code(h)ers 2024</div>
         <div class="info-box">
             <p>Inviting girls to challenge stereotypes in this traditionally male-dominated field.</p>
-            <p>Saturday 9 March 2024, 12 noon to 6 pm @ Chinese International School HK</p>
+            <p>Saturday 9 March 2024, 11:00am to 5:00pm @ Chinese International School HK</p>
             <p>Proudly organised by students from Chinese International School, German Swiss International School, Harrow International School, Kellett School, King George V School, Sha Tin College, South Island School, Victoria Shanghai Acadamy, and West Island School.</p>
         </div>
         <a class="link" href="https://instagram.com/codehershk">Instagram</a>
         <br>
-        <a class="disabled-link">Registrations - coming soon</a>
+        <a class="link" href="https://docs.google.com/forms/d/e/1FAIpQLSeecJLOzCaWIQ5ox6ofmv31NsMSm2gsM6k30e6_eY92oIJrbA/viewform">Registrations</a>
     </div>
 </body>
 </html>
