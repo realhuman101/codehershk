@@ -2,7 +2,10 @@ import React from 'react'
 
 const Footer = () => {
   return (
-	<div>footer</div>
+	<div id="footer">
+		<div></div> {/* Left side */}
+		<div></div> {/* Right side */}
+	</div>
   )
 }
 
