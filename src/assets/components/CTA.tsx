@@ -1,7 +1,7 @@
 function CTA() { // Call To Action
   return (
 	<div id="CTA">
-		<h1 id="mainTitle">CodeHers</h1>
+		<div id="codehersTitle"><h1>Code</h1><h1 id="mainTitle">Hers</h1></div>
 	</div>
   )
 }

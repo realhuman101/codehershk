@@ -15,4 +15,35 @@ body {
 	width: 100vw;
 	height: calc(100vh - 60px);
 	background-color: #363636;
+	color: #e4e2dd;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#codehersTitle {
+	display: flex;
+	flex-direction: row;
+	font-size: 50px;
+}
+
+#mainTitle {
+	width: fit-content;
+	background-image: linear-gradient(144deg, #c340ff, #9542f3 50%, #00ddeb);
+	background-size: 450% 100%;
+  	background-position: 0% 0%;
+	color: transparent;
+	background-clip: text;
+	animation: imgGradAnimate 2s linear infinite;
+}
+
+// Animations
+@keyframes imgGradAnimate {
+	0% {
+	  	background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 0%;
+  	}
 }
