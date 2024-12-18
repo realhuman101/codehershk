@@ -4,7 +4,6 @@ import styles from "./css/page.module.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import GradientHero from "@/components/GradientHero";
 
 export default function Home() {
   return (
