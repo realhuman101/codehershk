@@ -92,6 +92,12 @@ body {
 	display: flex;
 	border: none;
 	cursor: pointer;
+	width: fit-content;
+}
+
+.menu-button-icon {
+	width: 10px;
+	height: 10px;
 }
   
 .nav {
@@ -112,8 +118,6 @@ body {
 	height: 100%;
 	position: absolute;
 	inset: 0%;
-	border-top-left-radius: 1.25em;
-	border-bottom-left-radius: 1.25em;
 }
   
 .menu {
@@ -167,6 +171,11 @@ body {
 	width: 100%;
 	text-decoration: none;
 	display: flex;
+	overflow: hidden;
+}
+
+.eyebrow {
+	color: var(--color-neutral-800);
 }
 
 .menu-link-heading {
@@ -176,6 +185,7 @@ body {
 	font-size: 5.625em;
 	font-weight: 700;
 	line-height: .75;
+	color: var(--color-dark);
 	transition: transform .55s var(--cubic-default);
 	position: relative;
 	text-shadow: 0px 1em 0px var(--color-neutral-200);
@@ -219,7 +229,7 @@ body {
 }
 
 .bg-panel.second {
-	background-color: var(--color-neutral-100);
+	background-color: var(--color-neutral-300);
 }
 
 @media (hover: hover) {

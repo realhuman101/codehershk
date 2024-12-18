@@ -131,7 +131,7 @@ const Navbar = () => {
                       className="menu-list-item"
                       initial={{ y: '140%', rotate: 10 }}
                       animate={{ y: 0, rotate: 0 }}
-                      transition={{ delay: 0.35 + (index * 0.05) }}
+                      transition={{ delay: 0.50 + (index * 0.05) }}
                     >
                       <a href="#" className="menu-link">
                         <span className="eyebrow">{item.number}</span>
