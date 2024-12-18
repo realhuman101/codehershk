@@ -12,9 +12,10 @@ export default function Home() {
       <Navbar/>
 
       {/* Hero section */}
-      <div id={styles.hero}>
-        <GradientHero/>
-      </div>
+      <section id={styles.hero}>
+        <h1>CodeHers</h1>
+        <h2>Empowering <i>her</i> future.</h2>
+      </section>
 
       <Footer/>
     </div>
