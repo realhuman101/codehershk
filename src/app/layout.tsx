@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./css/globals.css";
-
-const poppins = localFont({
-  src: "./fonts/Poppins/Poppins-Regular.ttf",
-  variable: "--font-poppins",
-  weight: "100 900",
-});
+import "./fonts/fontfaces.css";
 
 export const metadata: Metadata = {
   title: "CodeHersHK",
@@ -20,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable}`}>
+      <body>
         {children}
       </body>
     </html>

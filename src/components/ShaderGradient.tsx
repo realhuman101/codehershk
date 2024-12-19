@@ -20,7 +20,7 @@ export default ({
   animate = true,
   shape = 'plane',
   speed = 0.01
-}) => {
+} : GradientProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
