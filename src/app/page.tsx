@@ -15,6 +15,7 @@ export default function Home() {
     <div className={styles.page}>
       <Navbar/>
 
+      {/* @ts-expect-error typescript tweaking rn */}
       <CustomCursor stiffness={1000} damping={25}/>
 
       {/* Hero section */}
