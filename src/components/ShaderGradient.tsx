@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
 import { vertex, fragment } from './shaders';
+import viewportHeight from './viewportHeight'
 
 interface GradientProps {
   colors: [string, string, string];
@@ -30,54 +31,53 @@ export default ({
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
   const meshRef = useRef<THREE.Mesh | null>(null);
 
+  const [ vw, setVW ] = useState(window.innerWidth);
+  const [ vh, setVH ] = useState(viewportHeight());
+
   const defaultStyling = {
     width: '100vw',
-    height: '100vh',
+    height: '100dvh',
     position: 'absolute',
     top: 0,
     left: 0,
     overflow: 'hidden',
     background: 'transparent',
   }
-
+  
   style = Object.assign({}, defaultStyling, style);
-
+  
   const updatePlaneSize = () => {
     if (!cameraRef.current || !meshRef.current || shape !== 'plane') return;
-
+    
     const camera = cameraRef.current;
     const distance = camera.position.z;
     const fov = camera.fov * (Math.PI / 180);
     const height = 2 * Math.tan(fov / 2) * distance;
-    const width = height * (window.innerWidth / window.innerHeight);
-
+    const width = height * (vw / vh);
+    
     // Update plane geometry
     const newGeometry = new THREE.PlaneGeometry(width, height, 64, 64);
     meshRef.current.geometry.dispose();
     meshRef.current.geometry = newGeometry;
   };
-
+  
   useEffect(() => {
-    const handleResize = () => {
-      if (!containerRef.current || !rendererRef.current || !cameraRef.current) return;
+    setVW(Math.max(document.documentElement.clientWidth || 0, vw || 0))
+    setVH(Math.max(document.documentElement.clientHeight || 0, vh || 0))
+    
+    if (!containerRef.current || !rendererRef.current || !cameraRef.current) return;
+    
+    const width = vw;
+    const height = vh;
+    
+    cameraRef.current.aspect = width / height;
+    cameraRef.current.updateProjectionMatrix();
 
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+    rendererRef.current.setSize(width, height, false);
+    rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-      cameraRef.current.aspect = width / height;
-      cameraRef.current.updateProjectionMatrix();
-
-      rendererRef.current.setSize(width, height, false);
-      rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-      updatePlaneSize();
-    };
-
-    handleResize()
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [shape]);
+    updatePlaneSize();
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -89,7 +89,7 @@ export default ({
 
     const camera = new THREE.PerspectiveCamera(
       45,
-      window.innerWidth / window.innerHeight,
+      vw / vh,
       0.1,
       100
     );
@@ -100,7 +100,7 @@ export default ({
       antialias: true,
       alpha: true
     });
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(vw, vh);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
