@@ -8,15 +8,27 @@
 	align-items: center;	
 }
 
-#hero>h1, #hero>h2 {
+#hero .h1, #hero .h2 {
 	color: white;
 	z-index: 20;
 }
 
-#hero>h1 {
+#hero .h1 {
 	font-size: 10em;
 }
 
-#hero>h2 {
+#hero .h2 {
 	font-size: 6em;
+}
+
+#hero .h2.i {
+	font-family: "Coolvetica Italic";
+	margin-top: auto;
+}
+
+#hero div {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+	align-items: center;
 }
