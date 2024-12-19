@@ -7,8 +7,8 @@ const nextConfig = {
   images: {
       unoptimized: true, 
     },
-  assetPrefix: isProd ? '/your-repository-name/' : '',
-  basePath: isProd ? '/your-repository-name' : '',
+  assetPrefix: isProd ? '/codehershk/' : '',
+  basePath: isProd ? '/codehershk' : '',
   output: 'export'
 };
 
