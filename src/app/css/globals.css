@@ -214,6 +214,21 @@ b {
 	transition: color .55s var(--cubic-default);
 }
 
+@media (max-width: 767px) {
+	.menu-link-heading {
+		font-size: 2rem;
+		line-height: 1.1;
+	}
+  
+	.eyebrow {
+	  	font-size: 1rem;
+	}
+  
+	.menu-list {
+	  	gap: 1rem;
+	}
+}  
+
 .menu-details {
 	padding-left: var(--menu-padding);
 	grid-column-gap: 1.25em;
@@ -364,6 +379,7 @@ b {
 	flex-direction: column;
 	padding: 10px 10px;
 	border-radius: 15px;
+	z-index: 999999;
 }
 
 .bar1 {

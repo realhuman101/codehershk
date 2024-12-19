@@ -65,7 +65,7 @@ export default function Home() {
             >future </Typewriter>
           </div>
 
-          <HalftoneGradient className={styles.transition} rows={6} cols={Math.floor((windowSize.x / 10))+1}/>
+          <HalftoneGradient className={styles.transition} rows={windowSize.y < 400 ? (windowSize.y < 350 ? 4 : 5) : 6} cols={Math.floor((windowSize.x / 10))+1}/>
       </section>
 
       <section id={styles.about}>
