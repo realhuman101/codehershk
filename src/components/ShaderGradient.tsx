@@ -117,7 +117,7 @@ export default ({
 
     let animationFrameId: number;
     const animate = () => {
-      if (materialRef.current && animate) {
+      if (materialRef.current) {
         materialRef.current.uniforms.uTime.value += speed;
       }
       renderer.render(scene, camera);

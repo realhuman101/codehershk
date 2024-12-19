@@ -192,11 +192,6 @@ b {
 	transition: transform 0.55s var(--cubic-default);
 	z-index: 0;
 }
-
-.eyebrow {
-	color: var(--color-neutral-800);
-}
-
 .menu-link-heading {
 	z-index: 1;
 	text-transform: uppercase;
@@ -213,7 +208,7 @@ b {
 .menu-link .eyebrow {
 	z-index: 1;
 	position: relative;
-	color: var(--color-primary);
+	color: #ce3e71;
 	transition: color .55s var(--cubic-default);
 }
 
@@ -252,11 +247,11 @@ b {
 }
 
 .bg-panel.first {
-	background-color: rgb(255, 143, 79);
+	background-color: #8cc2b2;
 }
 
 .bg-panel.second {
-	background-color: rgb(117, 131, 255);
+	background-color: #df889c;
 }
 
 @media (hover: hover) {
@@ -280,7 +275,7 @@ b {
 	}
 
 	.menu-link:hover .eyebrow {
-		color: #fff;
+		color: #c4e9dc;
 	}
   
 	.social-link::after {
