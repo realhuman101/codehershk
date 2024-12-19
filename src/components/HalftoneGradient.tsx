@@ -32,8 +32,6 @@ const HalftoneGradient: React.FC<HalftoneGradientProps> = ({
         display: "grid",
         gridTemplateColumns: `repeat(${cols}, ${dotSize}px)`,
         gap: `${gap}px`,
-        padding: "20px",
-        paddingBottom: "0px",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

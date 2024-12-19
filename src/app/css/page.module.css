@@ -3,14 +3,16 @@
 /* ------------ */
 
 #hero {
-	background-color: black;
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 	padding-top: env(safe-area-inset-top);
+    min-height: -webkit-fill-available;
+	position: relative;
 }
 
 #hero .h1, #hero .h2 {
@@ -57,7 +59,10 @@
 .transition {
 	position: absolute;
 	background: transparent;
+	width: 100vw;
 	bottom: 0;
+	padding: 0;
+	left: 0;
 }
 
 /* ------------- */

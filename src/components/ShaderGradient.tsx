@@ -67,11 +67,13 @@ export default ({
       cameraRef.current.aspect = width / height;
       cameraRef.current.updateProjectionMatrix();
 
-      rendererRef.current.setSize(width, height);
+      rendererRef.current.setSize(width, height, false);
       rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
       updatePlaneSize();
     };
+
+    handleResize()
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -79,6 +81,8 @@ export default ({
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    containerRef.current.style.display = 'block';
 
     const scene = new THREE.Scene();
     sceneRef.current = scene;

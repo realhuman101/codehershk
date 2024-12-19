@@ -36,16 +36,26 @@ export default function Home() {
       {/* @ts-expect-error typescript tweaking rn */}
       <CustomCursor stiffness={1000} damping={25}/>
 
+      <ShaderGradient
+        colors={['#ff5005', '#dbba95', '#d0bce1']}
+        noiseStrength={0.6}
+        noiseDensity={0.2}
+        animate={true}
+        shape="plane"
+        speed={0.0025}
+        style={{ 
+          position: 'absolute',
+          zIndex: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          display: 'block'
+        }}
+        />
+        
       {/* Hero section */}
       <section id={styles.hero}>
-        <ShaderGradient
-          colors={['#ff5005', '#dbba95', '#d0bce1']}
-          noiseStrength={0.6}
-          noiseDensity={0.2}
-          animate={true}
-          shape="plane"
-          speed={0.0025}
-          />
 
           <Typewriter className={styles.h1}>CodeHers</Typewriter>
           <div>
