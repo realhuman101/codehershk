@@ -83,19 +83,19 @@ const Navbar = () => {
 							<div className="menu-bg">
 								<motion.div
 									className="bg-panel first"
-									initial={{ x: '101%' }}
+									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
 									transition={{ delay: 0 }}
 								/>
 								<motion.div
 									className="bg-panel second"
-									initial={{ x: '101%' }}
+									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
 									transition={{ delay: 0.30 }}
 								/>
 								<motion.div
 									className="bg-panel"
-									initial={{ x: '101%' }}
+									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
 									transition={{ delay: 0.50 }}
 								/>
