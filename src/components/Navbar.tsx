@@ -65,39 +65,42 @@ const Navbar = () => {
 						initial={{ display: 'none' }}
 						animate={{ display: 'block' }}
 						exit={{ display: 'none' }}
-					>
+						transition={{ ease: 'easeIn' }}
+						>
 						<motion.div
 							className="overlay"
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
 							onClick={() => setIsOpen(false)}
-						/>
+							transition={{ ease: 'easeIn' }}
+							/>
 
 						<motion.div
 							className="menu"
 							initial={{ x: '100%' }}
 							animate={{ x: 0 }}
 							exit={{ x: '120%' }}
-						>
+							transition={{ ease: 'easeInOut' }}
+							>
 							<div className="menu-bg">
 								<motion.div
 									className="bg-panel first"
 									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
-									transition={{ delay: 0, ease: "easeIn" }}
+									transition={{ delay: 0, ease: "easeInOut" }}
 								/>
 								<motion.div
 									className="bg-panel second"
 									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
-									transition={{ delay: 0.30, ease: "easeIn" }}
+									transition={{ delay: 0.20, ease: "easeIn" }}
 								/>
 								<motion.div
 									className="bg-panel"
 									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
-									transition={{ delay: 0.50, ease: "easeIn" }}
+									transition={{ delay: 0.350, ease: "easeIn" }}
 								/>
 							</div>
 
