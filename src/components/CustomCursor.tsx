@@ -43,7 +43,6 @@ const CustomCursor: React.FC = ({ stiffness=300, damping=20, width=50, height=50
 
   return (
     <motion.div
-		// @ts-expect-error STFU
 		style={{ display: mobileAndTabletCheck() ? 'none' : 'default' }}
 		className={styles.customCursor}
 		animate={{

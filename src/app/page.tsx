@@ -21,7 +21,7 @@ export default function Home() {
       {/* Hero section */}
       <section id={styles.hero}>
         <ShaderGradient
-          colors={['#5606ff', '#fe8989', '#000000']}
+          colors={['#f7cbd4', '#ffffff', '#c4e9dc']}
           noiseStrength={0.5}
           noiseDensity={0.2}
           animate={true}
