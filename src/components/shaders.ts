@@ -102,13 +102,11 @@ export const fragment = `
 		float t3 = (t1 + t2) * 0.5 + noise3;
 		
 		// Mix all three colors
-		vec3 color12 = mix(uColor1, uColor2, t1);
-		vec3 color23 = mix(uColor2, uColor3, t2);
-		vec3 color31 = mix(uColor3, uColor1, t3);
-		
-		// Final three-way blend
-		vec3 finalColor = mix(mix(color12, color23, t2), color31, t3);
-		
-		gl_FragColor = vec4(finalColor, 1.0);
+		vec3 color12 = mix(uColor1, uColor2, smoothstep(0.0, 1.0, t1));
+    vec3 color23 = mix(uColor2, uColor3, smoothstep(0.0, 1.0, t2));
+    vec3 color31 = mix(uColor3, uColor1, smoothstep(0.0, 1.0, t3));
+
+    vec3 finalColor = mix(mix(color12, color23, smoothstep(0.0, 1.0, t2)), color31, smoothstep(0.0, 1.0, t3));
+    gl_FragColor = vec4(finalColor, 1.0);
 	}
 `;

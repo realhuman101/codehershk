@@ -210,7 +210,7 @@ b {
 .menu-link .eyebrow {
 	z-index: 1;
 	position: relative;
-	color: #ce3e71;
+	color: #ff4d00;
 	transition: color .55s var(--cubic-default);
 }
 
@@ -249,11 +249,11 @@ b {
 }
 
 .bg-panel.first {
-	background-color: #8cc2b2;
+	background-color: #ff8b59;
 }
 
 .bg-panel.second {
-	background-color: #df889c;
+	background-color: #bce1cd;
 }
 
 @media (hover: hover) {
