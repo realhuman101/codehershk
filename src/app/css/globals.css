@@ -252,11 +252,11 @@ b {
 }
 
 .bg-panel.first {
-	background-color: var(--color-primary);
+	background-color: rgb(255, 143, 79);
 }
 
 .bg-panel.second {
-	background-color: var(--color-neutral-300);
+	background-color: rgb(117, 131, 255);
 }
 
 @media (hover: hover) {

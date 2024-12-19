@@ -8,12 +8,14 @@ import Footer from "@/components/Footer";
 
 import ShaderGradient from "@/components/ShaderGradient";
 import Typewriter from "@/components/Typewriter";
+import CustomCursor from "@/components/CustomCursor";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <Navbar/>
 
+      <CustomCursor stiffness={1000} damping={25}/>
 
       {/* Hero section */}
       <section id={styles.hero}>

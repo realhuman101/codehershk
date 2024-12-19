@@ -7,11 +7,11 @@ const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	const menuItems = [
-		{ title: 'About Us', number: '01' },
-		{ title: 'Event', number: '02' },
-		{ title: 'Past Stats', number: '03' },
-		{ title: 'Partners', number: '04' },
-		{ title: 'Contact us', number: '05' },
+		{ title: 'About Us', number: '01', redirect: '#' },
+		{ title: 'Ongoing Events', number: '02', redirect: '#' },
+		{ title: 'Past Events', number: '03', redirect: '#' },
+		{ title: 'Partners', number: '04', redirect: '#' },
+		{ title: 'Contact us', number: '05', redirect: '#' },
 	];
 
 	const socialLinks = [
@@ -85,19 +85,19 @@ const Navbar = () => {
 									className="bg-panel first"
 									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
-									transition={{ delay: 0 }}
+									transition={{ delay: 0, ease: "easeIn" }}
 								/>
 								<motion.div
 									className="bg-panel second"
 									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
-									transition={{ delay: 0.30 }}
+									transition={{ delay: 0.30, ease: "easeIn" }}
 								/>
 								<motion.div
 									className="bg-panel"
 									initial={{ x: '100%' }}
 									animate={{ x: 0 }}
-									transition={{ delay: 0.50 }}
+									transition={{ delay: 0.50, ease: "easeIn" }}
 								/>
 							</div>
 
@@ -109,9 +109,9 @@ const Navbar = () => {
 											className="menu-list-item"
 											initial={{ y: '140%', rotate: 10, display: 'none' }}
 											animate={{ y: 0, rotate: 0, display: 'block' }}
-											transition={{ delay: 0.4 + (index * 0.1) }}
+											transition={{ delay: .75 + (index * 0.1) }}
 										>
-											<a href="#" className="menu-link" target="_blank">
+											<a href={item.redirect} className="menu-link" target="_blank">
 												<span className="eyebrow">{item.number}</span>
 												<span className="menu-link-heading">{item.title}</span>
 												<div className="menu-link-bg" />
@@ -136,6 +136,7 @@ const Navbar = () => {
 												initial={{ y: '100%' }}
 												animate={{ y: 0 }}
 												transition={{ delay: 0.5 + (index * 0.2) }}
+												target="_blank"
 											>
 												{link.title}
 											</motion.a>
