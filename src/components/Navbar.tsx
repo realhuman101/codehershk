@@ -114,7 +114,7 @@ const Navbar = () => {
 											animate={{ y: 0, rotate: 0, display: 'block' }}
 											transition={{ delay: .75 + (index * 0.1) }}
 										>
-											<a href={item.redirect} className="menu-link" target="_blank">
+											<a href={item.redirect} className="menu-link">
 												<span className="eyebrow">{item.number}</span>
 												<span className="menu-link-heading">{item.title}</span>
 												<div className="menu-link-bg" />

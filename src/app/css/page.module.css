@@ -18,12 +18,12 @@
 }
 
 #hero .h1 {
-	font-size: 10em;
+	font-size: 15vw;
 	font-family: "Coolvetica";
 }
 
 #hero .h2 {
-	font-size: 6em;
+	font-size: 11vw;
 	opacity: .8;
 }
 
@@ -35,8 +35,22 @@
 #hero div {
 	display: flex;
 	flex-direction: row;
-	gap: 15px;
+	gap: 2vw;
 	align-items: center;
+}
+
+@media (min-width: 965px) {
+	#hero .h1 {
+		font-size: 145px;
+	}
+
+	#hero .h2 {
+		font-size: 105px;
+	}
+
+	#hero div {
+		gap: 20px;
+	}
 }
 
 /* WAVES */

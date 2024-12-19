@@ -26,6 +26,7 @@ body {
 	font-family: "Coolvetica Condensed", Arial, Helvetica, sans-serif;
 	font-weight: 500;
 	line-height: 1;
+	overflow-x: hidden;
 }
 
 b {
