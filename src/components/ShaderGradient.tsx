@@ -11,6 +11,7 @@ interface GradientProps {
   animate?: boolean;
   shape?: 'sphere' | 'plane';
   speed?: number;
+  style?: React.CSSProperties;
 }
 
 export default ({
@@ -19,7 +20,8 @@ export default ({
   noiseDensity = 1.1,
   animate = true,
   shape = 'plane',
-  speed = 0.01
+  speed = 0.01,
+  style = {}
 } : GradientProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
@@ -27,6 +29,18 @@ export default ({
   const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
   const meshRef = useRef<THREE.Mesh | null>(null);
+
+  const defaultStyling = {
+    width: '100vw',
+    height: '100vh',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    overflow: 'hidden',
+    background: 'transparent',
+  }
+
+  style = Object.assign({}, defaultStyling, style);
 
   const updatePlaneSize = () => {
     if (!cameraRef.current || !meshRef.current || shape !== 'plane') return;
@@ -140,15 +154,7 @@ export default ({
   return (
     <motion.div
       ref={containerRef}
-      style={{
-        width: '100vw',
-        height: '100vh',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        overflow: 'hidden',
-        background: 'transparent',
-      }}
+      style={style}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
