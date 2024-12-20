@@ -46,7 +46,7 @@ const Navbar = () => {
 						</div>
 						<div className="nav-row__right">
 							<button className="menu-button" onClick={toggleMenu}>
-								<div className={"nav_bar " + (isOpen ? "active" : "")}>
+								<div className={"nav_bar " + (isOpen ? "active" : "")} style={{ backgroundColor: isOpen ? "#000" : "rgb(0, 0, 0, 0)" }}>
 									<div className="bar1"></div>
 									<div className="bar2"></div>
 									<div className="bar3_h"></div>
