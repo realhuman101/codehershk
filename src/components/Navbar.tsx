@@ -9,7 +9,7 @@ const Navbar = () => {
 	const menuItems = [
 		{ title: 'About Us', number: '01', redirect: '#' },
 		{ title: 'Ongoing Events', number: '02', redirect: '#' },
-		{ title: 'Past Events', number: '03', redirect: '#' },
+		{ title: 'Event Archive', number: '03', redirect: '#' },
 		{ title: 'Partners', number: '04', redirect: '#' },
 		{ title: 'Contact us', number: '05', redirect: '#' },
 	];
@@ -116,7 +116,7 @@ const Navbar = () => {
 										>
 											<a href={item.redirect} className="menu-link">
 												<span className="eyebrow">{item.number}</span>
-												<span className="menu-link-heading">{item.title}</span>
+												<span className="menu-link-heading" data-text={item.title}>{item.title}</span>
 												<div className="menu-link-bg" />
 											</a>
 										</motion.li>

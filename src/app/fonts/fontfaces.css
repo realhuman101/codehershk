@@ -36,3 +36,8 @@
     font-weight: normal;
     src: local('Coolvetica Regular Italic'), url('coolvetica rg it.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'Manrope';
+    src: local('Manrope'), url('Manrope-VariableFont_wght.ttf') format('ttf');
+}

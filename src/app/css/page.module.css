@@ -26,13 +26,27 @@
 }
 
 #hero .h2 {
-	font-size: 11vw;
+	font-size: 8vw;
 	opacity: .8;
 }
 
 #hero .h2.i {
-	font-family: "Coolvetica Italic";
 	margin-top: auto;
+	position: relative;
+	font-weight: 700;
+}
+
+#hero .h2.i::after {
+	content: '';
+	position: absolute;
+	background-color: white;
+	left: 0;
+	bottom: 0;
+	margin: 0 auto;
+	border-radius: 5px;
+	width: 0;
+	height: 3px;
+	animation: underline 500ms ease-in-out 3s forwards;
 }
 
 #hero div {
@@ -73,4 +87,16 @@
 	width: 100%;
 	background-color: white;
 	height: 500px;
+}
+
+/* KEYFRAMES */
+
+@keyframes underline {
+	from {
+		width: 0;
+	}
+
+	to {
+		width: 100%;
+	}
 }

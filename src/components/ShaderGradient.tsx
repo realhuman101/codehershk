@@ -31,8 +31,8 @@ export default ({
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
   const meshRef = useRef<THREE.Mesh | null>(null);
 
-  const [ vw, setVW ] = useState(window.innerWidth);
-  const [ vh, setVH ] = useState(viewportHeight());
+  const [ vw, setVW ] = useState(0);
+  const [ vh, setVH ] = useState(0);
 
   const defaultStyling = {
     width: '100vw',
@@ -62,8 +62,8 @@ export default ({
   };
   
   useEffect(() => {
-    setVW(Math.max(document.documentElement.clientWidth || 0, vw || 0))
-    setVH(Math.max(document.documentElement.clientHeight || 0, vh || 0))
+    setVW(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
+    setVH(Math.max(document.documentElement.clientHeight || 0, viewportHeight() || 0))
     
     if (!containerRef.current || !rendererRef.current || !cameraRef.current) return;
     

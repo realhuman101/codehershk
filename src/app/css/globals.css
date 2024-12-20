@@ -18,12 +18,13 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: 'Manrope';
 }
   
 body {
 	background-color: var(--color-neutral-300);
 	color: var(--color-dark);
-	font-family: "Coolvetica Condensed", Arial, Helvetica, sans-serif;
+	font-family: "Manrope", Arial, Helvetica, sans-serif;
 	font-weight: 500;
 	line-height: 1;
 	overflow-x: hidden;
@@ -39,7 +40,8 @@ html {
 }
 
 b {
-	font-family: "Coolvetica";
+	font-family: "Manrope";
+	font-weight: bold;
 }
   
 .header {
@@ -146,6 +148,7 @@ b {
 	margin-left: auto;
 	position: relative;
 	overflow: hidden;
+	font-family: 'Coolvetica';
 }
   
 .menu-inner {
@@ -173,6 +176,8 @@ b {
 .menu-list-item {
 	position: relative;
 	overflow: hidden;
+	height: auto;
+    margin-bottom: 0.5em;
 }
 
 .menu-link {
@@ -182,10 +187,11 @@ b {
 	grid-column-gap: .75em;
 	grid-row-gap: .75em;
 	width: 100%;
-	height: fit-content;
+	height: auto;
 	text-decoration: none;
 	display: flex;
 	overflow: hidden;
+	align-items: flex-start;
 }
 
 
@@ -205,14 +211,33 @@ b {
 .menu-link-heading {
 	z-index: 1;
 	text-transform: uppercase;
-	font-family: "Coolvetica Condensed";
-	font-size: 5.625em;
+	font-family: "Coolvetica";
+	font-size: 5em;
 	font-weight: 700;
-	line-height: .75;
+	line-height: .9;
 	color: var(--color-dark);
 	transition: transform .5s var(--cubic-default);
+	height: fit-content;
 	position: relative;
-	text-shadow: 0px 1em 0px var(--color-neutral-200);
+	max-width: 100%;
+}
+
+.menu-link-heading::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    bottom: -2em;
+    color: var(--color-neutral-200);
+    transform: translateY(0);
+    transition: transform 0.5s var(--cubic-default);
+    z-index: -1;
+}
+
+@media (hover: hover) {
+	.menu-link:hover .menu-link-heading {
+		transform: translateY(-2em);
+		transition-delay: 0.1s;
+	}
 }
 
 .menu-link .eyebrow {
@@ -220,6 +245,7 @@ b {
 	position: relative;
 	color: #ff4d00;
 	transition: color .55s var(--cubic-default);
+	margin-top: 0.5em;
 }
 
 @media (max-width: 767px) {
@@ -260,6 +286,7 @@ b {
 	text-decoration: none;
 	position: relative;
 	color: var(--color-dark);
+	font-family: 'Manrope';
 }
 
 .bg-panel {
@@ -283,21 +310,11 @@ b {
 	.menu-button:hover .icon-wrap {
 	  	transform: rotate(90deg);
 	}
-  
-	.menu-link:hover .menu-link-heading {
-		transform: translate(0px, -1em);
-		transition-delay: 0.1s;
-	}
 
 	.menu-link:hover::before {
 		transform: scaleY(1);
 		transform-origin: top;
 	  }
-	
-	.menu-link:hover .menu-link-heading {
-		transform: translate(0px, -1em);
-		transition-delay: 0.1s;
-	}
 
 	.menu-link:hover .eyebrow {
 		color: #c4e9dc;

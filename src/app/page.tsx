@@ -64,10 +64,15 @@ export default function Home() {
               delay={1000}
             >Empowering </Typewriter>
 
-            <Typewriter 
+            <motion.div
+              animate={{ skewX: "-15deg" }}
+              transition={{delay: 3, ease: 'easeInOut' }}
+            >
+              <Typewriter 
               className={`${styles.h2} ${styles.i}`}
               delay={2100}
-            >her </Typewriter>
+              >her </Typewriter>
+            </motion.div>
 
             <Typewriter 
               className={styles.h2}
