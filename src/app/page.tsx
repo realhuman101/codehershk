@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
-import styles from "./css/page.module.css";
+import "./css/page.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,9 +12,12 @@ import ShaderGradient from "@/components/ShaderGradient";
 import Typewriter from "@/components/Typewriter";
 import CustomCursor from "@/components/CustomCursor";
 import HalftoneGradient from "@/components/HalftoneGradient";
+import MiniNav from "@/components/MiniNav";
 
 export default function Home() {
   const [ windowSize, setWindowSize ] = useState({ x: 0, y: 0 });
+  const [ miniNavScroll, setMiniNavScroll ] = useState(false)
+  const miniNavRef = useRef(null)
 
   useEffect(() => {
     function getSize() {
@@ -30,7 +33,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className={styles.page}>
+    <div className='page'>
       <Navbar/>
 
       {/* @ts-expect-error typescript tweaking rn */}
@@ -56,12 +59,12 @@ export default function Home() {
         />
         
       {/* Hero section */}
-      <section id={styles.hero}>
+      <section id='hero'>
 
-          <Typewriter className={styles.h1}>CodeHers</Typewriter>
+          <Typewriter className='h1'>CodeHers</Typewriter>
           <div>
             <Typewriter 
-              className={styles.h2}
+              className='h2'
               delay={1000}
             >Empowering </Typewriter>
 
@@ -70,37 +73,50 @@ export default function Home() {
               transition={{delay: 3, ease: 'easeInOut' }}
             >
               <Typewriter 
-              className={`${styles.h2} ${styles.i}`}
+              className={`h2 i`}
               delay={2100}
               >her </Typewriter>
             </motion.div>
 
             <Typewriter 
-              className={styles.h2}
+              className='h2'
               delay={2300}
             >future </Typewriter>
           </div>
 
           {/* <HalftoneGradient className={styles.transition} rows={windowSize.y < 400 ? (windowSize.y < 350 ? 4 : 5) : 6} cols={Math.floor((windowSize.x / 10))+1}/> */}
       
-          <svg className={styles.waves} xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+          <svg className='waves' xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
             <defs>
                 <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
             </defs>
-            <g className={styles.wave1}>
+            <g className='wave1'>
                 <use href="#wave-path" x="50" y="3"/>
             </g>
-            <g className={styles.wave2}>
+            <g className='wave2'>
                 <use href="#wave-path" x="50" y="0"/>
             </g>
-            <g className={styles.wave3}>
+            <g className='wave3'>
                 <use href="#wave-path" x="50" y="9"/>
             </g>
           </svg>
       </section>
 
-      <section id={styles.about}>
-        
+        <MiniNav items={[
+          { text: 'About', sectionId: 'about' },
+        ]} 
+        />
+
+      <section id='about'>
+        <motion.h1
+          initial={{ translateY: '-10px' }}
+          animate={{ translateY: '0' }}
+          viewport={{ once: true }}
+        >ABOUT</motion.h1>
+        <h3>Short description</h3>
+        <div>
+
+        </div>
       </section>
 
       <Footer/>

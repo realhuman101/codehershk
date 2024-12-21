@@ -501,18 +501,22 @@ b {
 
 .nav_bar.active .bar3_h {
 	transform: rotate(-45deg);
+	mix-blend-mode: none;
 }
 
 .nav_bar.active .bar2 {
 	transform: rotate(45deg);
+	mix-blend-mode: none;
 }
 
 .nav_bar.active .bar1 {
 	opacity: 0;
 	width: 30px;
+	mix-blend-mode: none;
 }
 
 .nav_bar.active .bar4 {
 	opacity: 0;
 	width: 30px;
+	mix-blend-mode: none;
 }
