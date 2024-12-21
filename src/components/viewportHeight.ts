@@ -5,6 +5,10 @@
 	testDiv.style.top = "-9999px";
 	document.body.appendChild(testDiv);
 	const accurateHeight = testDiv.offsetHeight;
-	document.body.removeChild(testDiv);
-	return accurateHeight;
+	if (document.body) {
+		document.body.removeChild(testDiv);
+		return accurateHeight;
+	} else {
+		return viewportHeight();
+	}
 }

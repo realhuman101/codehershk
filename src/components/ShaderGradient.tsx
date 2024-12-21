@@ -31,11 +31,11 @@ export default ({
   const materialRef = useRef<THREE.ShaderMaterial | null>(null);
   const meshRef = useRef<THREE.Mesh | null>(null);
 
-  const [ vw, setVW ] = useState(0);
-  const [ vh, setVH ] = useState(0);
+  const [ vw, setVW ] = useState(1);
+  const [ vh, setVH ] = useState(1);
 
   const defaultStyling = {
-    width: '100vw',
+    width: '100dvw',
     height: '100dvh',
     position: 'absolute',
     top: 0,
@@ -62,21 +62,27 @@ export default ({
   };
   
   useEffect(() => {
-    setVW(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
-    setVH(Math.max(document.documentElement.clientHeight || 0, viewportHeight() || 0))
-    
-    if (!containerRef.current || !rendererRef.current || !cameraRef.current) return;
-    
-    const width = vw;
-    const height = vh;
-    
-    cameraRef.current.aspect = width / height;
-    cameraRef.current.updateProjectionMatrix();
+    function handleResize() {
+      setVW(Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0))
+      setVH(Math.max(document.documentElement.clientHeight || 0, viewportHeight() || 0))
+      
+      if (!containerRef.current || !rendererRef.current || !cameraRef.current) return;
+      
+      const width = vw;
+      const height = vh;
+      
+      cameraRef.current.aspect = width / height;
+      cameraRef.current.updateProjectionMatrix();
 
-    rendererRef.current.setSize(width, height, false);
-    rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      rendererRef.current.setSize(width, height, false);
+      rendererRef.current.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    updatePlaneSize();
+      updatePlaneSize();
+    }
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
