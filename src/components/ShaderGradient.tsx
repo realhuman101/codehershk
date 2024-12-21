@@ -2,8 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
-import { vertex, fragment } from './shaders';
-import viewportHeight from './viewportHeight'
+import { vertex, fragment } from './scripts/shaders';
+import viewportHeight from './scripts/viewportHeight'
 
 interface GradientProps {
   colors: [string, string, string];

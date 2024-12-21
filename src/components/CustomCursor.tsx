@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import styles from "./CustomCursor.module.css";
+import styles from "./css/CustomCursor.module.css";
 
 interface Props {
   stiffness?: number;
