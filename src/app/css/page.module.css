@@ -3,6 +3,8 @@
 /* ------------ */
 
 #hero {
+	--hero-font-color: #ffffff;
+
     width: 100dvw;
     height: 100dvh;
     display: flex;
@@ -16,7 +18,8 @@
 }
 
 #hero .h1, #hero .h2 {
-	color: white;
+	color: var(--hero-font-color);
+	mix-blend-mode: lighten;
 	z-index: 20;
 }
 
@@ -39,7 +42,7 @@
 #hero .h2.i::after {
 	content: '';
 	position: absolute;
-	background-color: white;
+	background-color: var(--hero-font-color);
 	left: 0;
 	bottom: 0;
 	margin: 0 auto;
@@ -67,6 +70,16 @@
 
 	#hero div {
 		gap: 20px;
+	}
+}
+
+@media (max-height: 400px) {
+	#hero .h2 {
+		font-size: 7vw;
+	}
+
+	#hero div {
+		gap: 2vw;
 	}
 }
 

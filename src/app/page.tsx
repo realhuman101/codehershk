@@ -37,7 +37,8 @@ export default function Home() {
       <CustomCursor stiffness={1000} damping={25}/>
 
       <ShaderGradient
-        colors={['#ff5005', '#dbba95', '#d0bce1']}
+        // colors={['#ff5005', '#dbba95', '#d0bce1']}
+        colors={['#ffa1e4', '#d9daff', '#d9fff0']}
         noiseStrength={0.6}
         noiseDensity={0.2}
         animate={true}

@@ -201,20 +201,21 @@ b {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: #2b696f;
+	background-color: #ff7895;
 	transform: scaleY(0);
 	transform-origin: bottom;
 	transition: transform 0.55s var(--cubic-default);
 	z-index: 0;
 }
+
 .menu-link-heading {
 	z-index: 1;
 	text-transform: uppercase;
 	font-family: "Coolvetica";
-	font-size: 5em;
+	font-size: 11vh;
 	font-weight: 700;
 	line-height: .9;
-	color: #2b696f;
+	color: #ff7895;
 	height: fit-content;
 	position: relative;
 	max-width: 100%;
@@ -226,11 +227,24 @@ b {
     position: absolute;
     left: 0;
     bottom: -2em;
-    color: #ff4434;
+    color: #afd8bd;
     transform: translateY(0);
     transition: transform 0.5s var(--cubic-default);
     z-index: -1;
 }
+
+@media (min-height: 615px) {
+	.menu-link-heading {
+		font-size: 10vh;
+	}
+}
+
+@media (min-height: 750px) {
+	.menu-link-heading {
+		font-size: 75px;
+	}
+}
+
 
 @media (hover: hover) {
 	.menu-link:hover .menu-link-heading {
@@ -242,7 +256,7 @@ b {
 .menu-link .eyebrow {
 	z-index: 1;
 	position: relative;
-	color: #ff4d00;
+	color: #07802f;
 	transition: color .55s var(--cubic-default);
 	margin-top: 0.5em;
 }
@@ -275,11 +289,11 @@ b {
 	}
 
 	.menu-link:hover .eyebrow {
-		color: #c4e9dc;
+		color: #81003c;
 	}
 }
   
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
 	.nav-logo-row {
 		grid-column-gap: 2.5em;
 		grid-row-gap: 2.5em;
@@ -340,7 +354,7 @@ b {
 	}
 }
 
-@media screen and (max-height: 450px) {
+@media (max-height: 450px) {
     .menu {
         padding-top: calc(1.5 * var(--menu-padding));
         padding-bottom: calc(0.5 * var(--menu-padding));
@@ -373,7 +387,7 @@ b {
     }
 }
 
-@media screen and (max-height: 350px) {
+@media (max-height: 350px) {
     .menu {
         padding-top: calc(var(--menu-padding));
     }
@@ -395,10 +409,15 @@ b {
     }
 }
 
-@media screen and (max-height: 250px) {
+@media (max-height: 250px) {
     .menu {
         padding-top: 1rem;
     }
+
+	.bg-panel {
+		border-top-left-radius: 0em;
+		border-bottom-left-radius: 0em;
+	}
 
     .menu-list {
         grid-template-columns: repeat(5, 1fr);
@@ -409,7 +428,7 @@ b {
     }
 }
 
-@media screen and (max-width: 479px) {
+@media (max-width: 479px) {
 	.menu {
 		padding-top: calc(7 * var(--menu-padding));
 		padding-bottom: calc(2 * var(--menu-padding));
@@ -435,7 +454,6 @@ b {
 	z-index: 999999;
 	width: fit-content;
 	height: fit-content;
-	background-color: var(--color-dark);
 }
 
 .bar1 {
