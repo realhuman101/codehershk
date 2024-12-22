@@ -137,7 +137,7 @@ export default ({
 	}, [items, updateHash])
 
 	return (
-		<nav className={`${styles.nav} ${className} ${isFixed ? styles.fixed : ''}`} style={{...style, position: isFixed ? 'fixed' : 'static'}}>
+		<nav className={`${styles.nav} ${className} ${isFixed ? styles.fixed : ''}`} style={{...style, position: isFixed ? 'fixed' : 'static'}} ref={navRef}>
 			{items.map((item, index) => (
 				<button
 					key={item.text}
