@@ -16,6 +16,7 @@ interface NavBarProps {
   className?: string
   autoSlide?: boolean
   updateHash?: boolean
+  fadeIn?: boolean
 }
 
 export default ({ 
@@ -24,6 +25,7 @@ export default ({
   autoSlide = false,
   updateHash = true,
   style = {},
+  fadeIn = false
 }: NavBarProps) => {
 	const [selected, setSelected] = useState(0)
 	const [isFixed, setIsFixed] = useState(false)
@@ -43,7 +45,6 @@ export default ({
 		  }
 	
 		  const scrollPosition = window.scrollY
-		  console.log(originalPositionRef.current)
 		  setIsFixed(scrollPosition >= originalPositionRef.current)
 		}
 		checkPosition()
@@ -137,7 +138,7 @@ export default ({
 	}, [items, updateHash])
 
 	return (
-		<nav className={`${styles.nav} ${className} ${isFixed ? styles.fixed : ''}`} style={{...style, position: isFixed ? 'fixed' : 'static'}} ref={navRef}>
+		<motion.nav className={`${styles.nav} ${className} ${isFixed ? styles.fixed : ''}`} style={{...style, position: isFixed ? 'fixed' : 'static'}} ref={navRef} initial={{ opacity: (fadeIn ? 0 : 1) }} animate={{ opacity: 1 }} >
 			{items.map((item, index) => (
 				<button
 					key={item.text}
@@ -160,6 +161,6 @@ export default ({
 				{item.text}
 				</button>
 			))}
-			</nav>
+			</motion.nav>
 	)
 }

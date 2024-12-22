@@ -39,6 +39,18 @@
 
 @font-face {
     font-family: 'Manrope';
-    src: local('Manrope'), url('Manrope-VariableFont_wght.ttf') format('ttf');
+    src: local('Manrope'),
+         url('Manrope-VariableFont_wght.ttf') format('truetype-variations');
     font-weight: 100 900;
+    font-stretch: 25% 151%;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito Sans';
+    src: local('Nunito Sans'),
+         url('NunitoSans_Variable.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-stretch: 25% 151%;
+    font-display: swap;
 }

@@ -41,8 +41,8 @@ interface AnimationConfig {
 }
 
 interface Props {
-  text: string;
   type: AnimationType;
+  children?: React.ReactElement | string;
   className?: string;
   config?: AnimationConfig;
 }
@@ -67,11 +67,13 @@ const defaultConfig: AnimationConfig = {
 };
 
 export default ({ 
-  text, 
   type, 
+  children = '', 
   className = '',
   config = {}
 }: Props) => {
+  if (typeof children !== 'string') return
+
   const finalConfig = { ...defaultConfig, ...config };
 
   const springTransition = {
@@ -217,7 +219,7 @@ export default ({
   // Special handling for letter-by-letter and word-by-word animations
   const getTextElements = () => {
     if (type === 'letterByLetter') {
-      return text.split('').map((char, index) => (
+      return children.split('').map((char, index) => (
         <motion.span
           key={index}
           variants={{
@@ -235,7 +237,7 @@ export default ({
     }
 
     if (type === 'wordByWord') {
-      return text.split(' ').map((word, index) => (
+      return children.split(' ').map((word, index) => (
         <motion.span
           key={index}
           variants={{
@@ -252,7 +254,7 @@ export default ({
       ));
     }
 
-    return text;
+    return children;
   };
 
   const variants = createAnimationVariants();

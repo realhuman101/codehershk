@@ -435,6 +435,34 @@ b {
 	}
 }
 
+.menu-list-item.active .menu-link-heading {
+    color: #07802f;
+}
+
+.menu-list-item.active .eyebrow {
+    color: #ff7895;
+}
+
+.menu-link.active::before {
+    transform: scaleY(1);
+    transform-origin: top;
+    background-color: #bce1cd;
+}
+
+@media (hover: hover) {
+    .menu-list-item.active .menu-link:hover .menu-link-heading {
+        color: #81003c;
+    }
+
+    .menu-list-item.active .menu-link:hover .eyebrow {
+        color: #07802f;
+    }
+
+    .menu-list-item.active .menu-link:hover::before {
+        background-color: #ff7895;
+    }
+}
+
 /* -------- */
 /* NAV ICON */
 /* -------- */
@@ -454,12 +482,13 @@ b {
 	z-index: 999999;
 	width: fit-content;
 	height: fit-content;
+	mix-blend-mode: exclusion; 
+	background: rgba(0, 255, 170, 0.8);
 }
 
 .bar1 {
 	border-radius: 30px;
 	background-color: rgb(255, 255, 255);
-	mix-blend-mode: exclusion; 
 	width: 30px;
 	margin-bottom: 6px;
 	transition: 0.4s;
@@ -469,7 +498,6 @@ b {
 .bar2 {
 	border-radius: 30px;
 	background-color: rgb(255, 255, 255);
-	mix-blend-mode: exclusion; 
 	width: 30px;
 	position: absolute;
 	transition: 0.4s;
@@ -478,7 +506,6 @@ b {
 
 .bar3_h {
 	border-radius: 30px;
-	mix-blend-mode: inherit; 
 	background-color: rgb(255, 255, 255);
 	width: 30px;
 	transition: 0.4s;
@@ -487,7 +514,6 @@ b {
 
 .bar4 {
 	border-radius: 30px;
-	mix-blend-mode: exclusion; 
 	background-color: rgb(255, 255, 255);
 	width: 30px;
 	margin-top: 6px;
@@ -501,22 +527,76 @@ b {
 
 .nav_bar.active .bar3_h {
 	transform: rotate(-45deg);
-	mix-blend-mode: none;
 }
 
 .nav_bar.active .bar2 {
 	transform: rotate(45deg);
-	mix-blend-mode: none;
 }
 
 .nav_bar.active .bar1 {
 	opacity: 0;
 	width: 30px;
-	mix-blend-mode: none;
 }
 
 .nav_bar.active .bar4 {
 	opacity: 0;
 	width: 30px;
-	mix-blend-mode: none;
+}
+
+/* ------ */
+/* FOOTER */
+/* ------ */
+
+#footer {
+	width: 100vw;
+	height: 50px;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+/* -------------- */
+/* DEFAULT STYLES */
+/* -------------- */
+
+/* Buttons */
+button {
+	padding: 10px 20px;
+	border: none;
+	border-radius: 50px;
+	color: white;
+	background-color: #00cbaa;
+	opacity: 1;
+	transition: opacity 250ms ease-in-out;
+}
+
+button:hover {
+	opacity: 0.7;
+}
+
+/* Moving Gradient */
+
+.backgroundMovingGradient {
+    background: linear-gradient(
+        -45deg,
+        #ffa1e4,
+        #d9daff,
+        #d9fff0,
+        #ffa1e4
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }

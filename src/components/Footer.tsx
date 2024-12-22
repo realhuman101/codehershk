@@ -2,10 +2,10 @@ import React from 'react'
 
 function Footer() {
   return (
-	  <div>
+	  <footer id='footer'>
+      <div>Copyright <b>©CodeHersHK</b></div>
       <div></div>
-      <div></div>
-    </div>
+    </footer>
   )
 }
 

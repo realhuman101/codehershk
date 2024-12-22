@@ -5,19 +5,21 @@ import { motion } from "motion/react";
 
 import "./css/page.css";
 
+import Loading from "@/components/Loading";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 import ShaderGradient from "@/components/ShaderGradient";
 import Typewriter from "@/components/Typewriter";
 import CustomCursor from "@/components/CustomCursor";
-import HalftoneGradient from "@/components/HalftoneGradient";
 import MiniNav from "@/components/MiniNav";
+import ParallaxButton from "@/components/ParallaxButton";
+
+import AnimatedText from "@/components/AnimatedText";
 
 export default function Home() {
   const [ windowSize, setWindowSize ] = useState({ x: 0, y: 0 });
-  const [ miniNavScroll, setMiniNavScroll ] = useState(false)
-  const miniNavRef = useRef(null)
 
   useEffect(() => {
     function getSize() {
@@ -34,6 +36,8 @@ export default function Home() {
 
   return (
     <div className='page'>
+      <Loading/>
+
       <Navbar/>
 
       {/* @ts-expect-error typescript tweaking rn */}
@@ -102,21 +106,44 @@ export default function Home() {
           </svg>
       </section>
 
+        <br style={{ height: '15px' }} />
+
         <MiniNav items={[
           { text: 'About', sectionId: 'about' },
+          { text: 'Events', sectionId: 'events' },
+          { text: 'Partners', sectionId: 'partners' }
         ]} 
+          fadeIn={true}
         />
 
       <section id='about'>
-        <motion.h1
-          initial={{ translateY: '-10px' }}
-          animate={{ translateY: '0' }}
-          viewport={{ once: true }}
-        >ABOUT</motion.h1>
-        <h3>Short description</h3>
-        <div>
-
+        <AnimatedText className={'mainTitle'} type={'slideDown'} config={{ duration: 0.2 }}>About</AnimatedText>
+        <AnimatedText type={'wordByWord'}>We are CodeHers - empowering women with a wide range of workshops, competitions, and experiences which they'll never forget.</AnimatedText>
+        
+        <div className={'mainFeatureBox'}>
+          <div>
+            <h1>Workshops</h1>
+            <p>
+              Hosted by professionals
+            </p>
+            <h1>Competitions</h1>
+            <p>
+              Compete against your peers!
+            </p>
+            <h1>Develop</h1>
+            <p>
+              Develop innovative products
+            </p>
+          </div>
         </div>
+        
+        <ParallaxButton className="movingGradient">Learn More</ParallaxButton>
+      </section>
+
+      <section id='events' style={{ height: '900px', backgroundColor: '#ff00ff' }}>
+      </section>
+
+      <section id='partners' style={{ height: '900px', backgroundColor: '#00ffff' }}>
       </section>
 
       <Footer/>

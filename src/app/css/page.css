@@ -128,7 +128,18 @@
 #about {
 	width: 100%;
 	background-color: white;
-	height: 5000px;
+	/* height: fit-content; */
+	height: 500px;
+	padding: 20px 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.mainTitle {
+	font-size: 3em;
+	font-weight: 700;
 }
 
 /* KEYFRAMES */
