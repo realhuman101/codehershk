@@ -434,7 +434,7 @@ b {
 		padding-bottom: calc(2 * var(--menu-padding));
 	}
 }
-
+/* 
 .menu-list-item.active .menu-link-heading {
     color: #07802f;
 }
@@ -461,7 +461,7 @@ b {
     .menu-list-item.active .menu-link:hover::before {
         background-color: #ff7895;
     }
-}
+} */
 
 /* -------- */
 /* NAV ICON */

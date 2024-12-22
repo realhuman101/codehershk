@@ -105,7 +105,13 @@ const Navbar = () => {
                             <div className="menu-inner">
                                 <ul className="menu-list">
                                     {menuItems.map((item, index) => (
-                                        <motion.li key={index} className="menu-item">
+                                        <motion.li 
+                                            key={index} 
+                                            className="menu-item"          
+                                            initial={{ y: '140%', rotate: 10, display: 'none' }}
+                                            animate={{ y: 0, rotate: 0, display: 'block' }}
+                                            transition={{ delay: .75 + (index * 0.1) }}
+                                        >
                                              <a href={item.path} className="menu-link">
 												<span className="eyebrow">{item.number}</span>
                                                 <span className="menu-link-heading" data-text={item.title}>{item.title}</span>
