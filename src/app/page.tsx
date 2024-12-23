@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "motion/react";
 
 import "./css/page.css";
@@ -15,6 +15,7 @@ import Typewriter from "@/components/Typewriter";
 import CustomCursor from "@/components/CustomCursor";
 import MiniNav from "@/components/MiniNav";
 import ParallaxButton from "@/components/ParallaxButton";
+import Blob from "@/components/Blob";
 
 import AnimatedText from "@/components/AnimatedText";
 
@@ -117,6 +118,7 @@ export default function Home() {
         />
 
       <section id='about'>
+        <Blob type={"aurora"}/>
         <AnimatedText className={'mainTitle'} type={'slideDown'} config={{ duration: 0.2 }}>About</AnimatedText>
         <AnimatedText type={'wordByWord'}>We are CodeHers - empowering women with a wide range of workshops, competitions, and experiences which they'll never forget.</AnimatedText>
         
@@ -137,7 +139,7 @@ export default function Home() {
           </div>
         </div>
         
-        <ParallaxButton className="movingGradient">Learn More</ParallaxButton>
+        <ParallaxButton className="backgroundMovingGradient" textTriggerDistance={200} textIntensity={0.07}>Learn More</ParallaxButton>
       </section>
 
       <section id='events' style={{ height: '900px', backgroundColor: '#ff00ff' }}>

@@ -580,13 +580,12 @@ button:hover {
 .backgroundMovingGradient {
     background: linear-gradient(
         -45deg,
-        #ffa1e4,
-        #d9daff,
-        #d9fff0,
-        #ffa1e4
+        #ff4acc,
+        #454bff,
+        #41ffb3
     );
     background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
+    animation: gradientMove 13s ease infinite;
 }
 
 @keyframes gradientMove {
