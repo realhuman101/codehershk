@@ -50,7 +50,7 @@ export default function Home() {
         noiseDensity={0.2}
         animate={true}
         shape="plane"
-        speed={0.0025}
+        speed={0.00025}
         style={{ 
           position: 'absolute',
           zIndex: 0,

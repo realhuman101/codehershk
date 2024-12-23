@@ -107,7 +107,8 @@ const Navbar = () => {
                                     {menuItems.map((item, index) => (
                                         <motion.li 
                                             key={index} 
-                                            className="menu-item"          
+                                            className="menu-item"
+                                            style={{ position: 'relative' }}      
                                             initial={{ y: '140%', rotate: 10, display: 'none' }}
                                             animate={{ y: 0, rotate: 0, display: 'block' }}
                                             transition={{ delay: .75 + (index * 0.1) }}
