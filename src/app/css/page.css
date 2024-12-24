@@ -38,20 +38,7 @@ section {
 
 #hero .h2.i {
 	margin-top: auto;
-	font-weight: 700;
-}
-
-#hero .h2.i::after {
-	content: '';
-	position: absolute;
-	background-color: var(--hero-font-color);
-	left: 0;
-	bottom: 0;
-	margin: 0 auto;
-	border-radius: 5px;
-	width: 0;
-	height: 3px;
-	animation: underline 500ms ease-in-out 3s forwards;
+	font-weight: 900;
 }
 
 #hero div {
@@ -124,6 +111,15 @@ section {
 }
 
 /* ------------- */
+/* MAIN SECTIONS */
+/* ------------- */
+
+.contentWrap section {
+	width: 100dvw;
+	min-height: 100dvh;
+}
+
+/* ------------- */
 /* ABOUT SECTION */
 /* ------------- */
 
@@ -145,16 +141,6 @@ section {
 }
 
 /* KEYFRAMES */
-
-@keyframes underline {
-	from {
-		width: 0;
-	}
-
-	to {
-		width: 100%;
-	}
-}
 
 @keyframes move-forever1 {
 	0% {

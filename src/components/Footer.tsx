@@ -1,5 +1,7 @@
 import React from 'react'
 
+import AnimatedText from './AnimatedText'
+
 import instagramIcon from '@/imgs/icons/instagram.svg'
 import linkedinIcon from '@/imgs/icons/linkedin.svg'
 import emailIcon from '@/imgs/icons/email.svg'
@@ -23,10 +25,11 @@ function Footer() {
   return (
 	  <footer id='footer'>
       <div>
-        <h1>CODE</h1>
-        <h1>HERS</h1>
+        <AnimatedText type='letterByLetter'>CODE</AnimatedText>
+        <AnimatedText type='letterByLetter'>HERS</AnimatedText>
         <a href="https://maps.app.goo.gl/xLFtz7FrKnbUbaYKA" target="_blank">Victoria Shanghai Academy, 19 Shum Wan Road, Aberdeen, Hong Kong</a>
       </div>
+      <div className="verticalLine"/>
       <div>
         <div className="socials">
           {

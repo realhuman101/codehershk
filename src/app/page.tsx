@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "motion/react";
 
 import "./css/page.css";
 
@@ -19,8 +19,66 @@ import Blob from "@/components/Blob";
 
 import AnimatedText from "@/components/AnimatedText";
 
+import pictures from "@/imgs/event/pictures";
+
+
+type AnimationConfig = {
+  feature: string;
+  ref: React.RefObject<HTMLDivElement>;
+  inputs: number[];
+  outputs: number[];
+  linked: boolean;
+};
+
+type TransformConfig = {
+  [id: string]: {
+    transform: MotionValue<number>;
+    scrollYProgress: MotionValue<number>;
+  }
+}
+
 export default function Home() {
   const [ windowSize, setWindowSize ] = useState({ x: 0, y: 0 });
+  const { scrollYProgress } = useScroll();
+  const learnMoreButton = useRef<HTMLButtonElement>(null);
+
+  const animationRefs = {
+    hero: useRef<HTMLDivElement>(null)
+  };
+
+  const [scrollAnimations, setScrollAnimations] = useState<TransformConfig>({});
+
+  useEffect(() => {
+    const config: AnimationConfig[] = [
+      {
+        //@ts-expect-error STFU
+        ref: animationRefs.hero,
+        feature: "heroScale",
+        inputs: [0, 100],
+        outputs: [1, 0.05],
+        linked: true
+      }
+    ];
+
+    const animations: TransformConfig = {};
+    
+    config.forEach((item) => {
+      if (item.ref.current) {
+        const { scrollYProgress } = useScroll({
+          //@ts-expect-error STFU
+          target: item.ref.current
+        });
+        const transform = useTransform(scrollYProgress, item.inputs, item.outputs);
+
+        animations[item.feature] = {
+          transform,
+          scrollYProgress
+        };
+      }
+    });
+
+    setScrollAnimations(animations);
+  }, []);
 
   useEffect(() => {
     function getSize() {
@@ -65,38 +123,45 @@ export default function Home() {
         
       {/* Hero section */}
       <section id='hero'>
-
-          <Typewriter className='h1'>CodeHers</Typewriter>
-          <div>
-            <Typewriter 
-              className='h2'
-              delay={1000}
-            >Empowering </Typewriter>
-
-            <motion.div
-              animate={{ skewX: "-15deg" }}
-              transition={{delay: 3, ease: 'easeInOut' }}
-            >
+          <motion.div style={{ scale: scrollAnimations["heroScale"]?.transform, display: 'flex', flexDirection: 'column' }}>
+            <Typewriter className='h1'>CodeHers</Typewriter>
+            <div>
               <Typewriter 
-              className={`h2 i`}
-              delay={2100}
-              >her </Typewriter>
-            </motion.div>
+                className='h2'
+                delay={1000}
+                >Empowering </Typewriter>
 
-            <Typewriter 
-              className='h2'
-              delay={2300}
-            >future </Typewriter>
-          </div>
-          <motion.button style={{ 
-            border: 'white 3px solid',
-            backgroundColor: 'transparent',
-            fontWeight: '300'
-           }}
-           initial={{ opacity: 0 }}
-           animate={{ opacity: 1 }}
-           transition={{ delay: 2500 }}
-           >Learn More</motion.button>
+              <motion.div
+                animate={{ skewX: "-15deg" }}
+                transition={{delay: 3, ease: 'easeInOut' }}
+                >
+                <Typewriter 
+                className={`h2 i`}
+                delay={2100}
+                >her </Typewriter>
+              </motion.div>
+
+              <Typewriter 
+                className='h2'
+                delay={2300}
+                >future </Typewriter>
+            </div>
+
+            <motion.button style={{ 
+              border: 'white 3px solid',
+              backgroundColor: 'transparent',
+              fontWeight: '300',
+              marginTop: '5px'
+            }}
+
+            // onMouseOver={()=>{if (learnMoreButton) {learnMoreButton.current.style.backgroundColor = 'white';learnMoreButton.current.style.color = '#ff7895'}}}
+            // onMouseLeave={()=>{if (learnMoreButton) {learnMoreButton.current.style.backgroundColor = 'transparent';learnMoreButton.current.style.color = 'white'}}}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2500 }}
+            ref={learnMoreButton}
+            >Learn More</motion.button>
+          </motion.div>
 
           {/* <HalftoneGradient className={styles.transition} rows={windowSize.y < 400 ? (windowSize.y < 350 ? 4 : 5) : 6} cols={Math.floor((windowSize.x / 10))+1}/> */}
       
@@ -116,12 +181,9 @@ export default function Home() {
           </svg>
       </section>
 
-
-       
-
       <div id="contentWrap">
         <section id="about">
-
+            <motion.h1 style={{ scale: scrollAnimations["heroScale"]?.transform, fontSize: '200px' }}>ABOUT</motion.h1>
         </section>
         
         <MiniNav items={[

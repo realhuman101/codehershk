@@ -39,6 +39,7 @@ body {
 
 html {
     height: -webkit-fill-available;
+	scroll-behavior: smooth;
 }
 
 b {
@@ -485,7 +486,8 @@ b {
 	width: fit-content;
 	height: fit-content;
 	mix-blend-mode: exclusion; 
-	background: rgba(0, 255, 170, 0.8);
+	background: rgba(255,255,255, 0);
+	filter: invert(100%);
 }
 
 .bar1 {
@@ -564,13 +566,14 @@ b {
 	margin: auto 0;
 }
 
-#footer>div:first-of-type h1 {
+#footer>div:first-of-type span {
 	font-family: 'Coolvetica';
-	font-size: 15vw;
+	font-size: 10vw;
 }
 
 #footer>div:first-of-type a {
 	font-style: italic;
+	font-size: 1vw;
 	opacity: 1;
 	transition: opacity 250ms ease-in-out;
 }
@@ -632,6 +635,18 @@ b {
 
 #footer .socials img {
 	fill: white;
+}
+
+#footer .verticalLine {
+	width: 2px;
+	border-radius: 5px;
+	height: calc(100% - 100px);
+	margin: auto 10px;
+	margin-right: auto;
+	background-color: white;
+	position: relative;
+	display: block;
+	opacity: 1;
 }
 
 /* -------------- */
