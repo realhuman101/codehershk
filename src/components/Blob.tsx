@@ -18,6 +18,8 @@ interface BlobProps {
 		left?: string;
 		right?: string;
 		bottom?: string;
+		transform?: string;
+		position?: 'absolute' | 'relative';
 	};
 	rotationSpeed?: number;
 	pulseScale?: number;
@@ -30,7 +32,7 @@ const Blob: React.FC<BlobProps> = ({
   gradientColors,
   size,
   delay = 0,
-  position = { top: '0', left: '0' },
+  position = { top: '0', left: '0', position: 'absolute' },
   rotationSpeed = 20,
   pulseScale = 1.1,
   layers = 3,
@@ -112,11 +114,12 @@ const Blob: React.FC<BlobProps> = ({
           }
         }}
       >
-        <path
-          d={blobConfig.pathData}
-          fill={`url(#gradient-${type}-${index})`}
-          transform={`rotate(${layerRotation})`}
-        />
+		<path
+			d={blobConfig.pathData}
+			fill={`url(#gradient-${type}-${index})`}
+			fillRule="evenodd"
+			transform={`rotate(${layerRotation})`}
+		/>
       </motion.g>
     );
   };
@@ -125,10 +128,16 @@ const Blob: React.FC<BlobProps> = ({
     <motion.div
       ref={blobRef}
       style={{
-        position: 'absolute',
+        position: position.position || 'absolute',
         width: blobSize,
         height: blobSize,
-        ...position,
+        ...(position.position !== 'relative' && {
+			top: position.top,
+			left: position.left,
+			right: position.right,
+			bottom: position.bottom,
+		  }),
+		transform: 'translate(-50%, -50%)',
         scale,
         opacity,
         y: yOffset

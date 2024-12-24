@@ -5,7 +5,8 @@
 	border-radius: 50%;
 	pointer-events: none;
 	mix-blend-mode: exclusion; 
-	background: rgba(0, 254, 212, 0.8);
+	/* background: rgba(0, 254, 212, 0.8); */
+	background: rgba(8, 154, 51, 0.8);
 	z-index: 99999; 
 	transform: translate(-50%, -50%); 
 }

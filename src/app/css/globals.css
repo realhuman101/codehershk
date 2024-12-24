@@ -19,6 +19,8 @@
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Manrope", Arial, Helvetica, sans-serif;
+	position: relative;
+	z-index: 0;
 }
   
 body {
@@ -549,11 +551,87 @@ b {
 
 #footer {
 	width: 100vw;
-	height: 50px;
+	height: fit-content;
 	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	background-color: #ff7895;
+	color: white;
+}
+
+#footer>div {
+	margin: auto 0;
+}
+
+#footer>div:first-of-type h1 {
+	font-family: 'Coolvetica';
+	font-size: 15vw;
+}
+
+#footer>div:first-of-type a {
+	font-style: italic;
+	opacity: 1;
+	transition: opacity 250ms ease-in-out;
+}
+
+#footer>div:first-of-type a::after {
+	display: none;
+}
+
+#footer>div:first-of-type a:hover {
+	opacity: 0.7;
+}
+
+#footer a {
+	text-decoration: none;
+	position: relative;
+	color: white;
+}
+
+#footer a::after {
+	position: absolute;	
+	background-color: #a9e6db;
+	content: '';
+	width: 0px;
+	height: 2px;
+	bottom: -1px;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	margin: 0 auto;
+	transition: opacity 250ms ease-in-out, width 250ms ease-in-out;
+}
+
+#footer a:hover::after {
+	width: 100%;
+	opacity: 1;
+}
+
+#footer .socials {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10px;
+	align-items: center;
+}
+
+#footer .socials a {
+	opacity: 1;
+	transition: opacity 250ms ease-in-out;
+}
+
+#footer .socials a:hover {
+	opacity: .7;
+	cursor: pointer;
+}
+
+#footer .socials a::after {
+	display: none;
+}
+
+#footer .socials img {
+	fill: white;
 }
 
 /* -------------- */
@@ -568,7 +646,7 @@ button {
 	color: white;
 	background-color: #00cbaa;
 	opacity: 1;
-	transition: opacity 250ms ease-in-out;
+	transition: all 250ms ease-in-out;
 }
 
 button:hover {
@@ -598,4 +676,35 @@ button:hover {
     100% {
         background-position: 0% 50%;
     }
+}
+
+/* Content Wrap Background */
+
+#contentWrap {
+	width: 100dvw;
+	min-height: 50px;
+	position: relative;
+	overflow: clip;
+	background: light-dark(#fff, #000);
+	z-index: 25;
+}
+
+#contentWrap::before {
+	--line: color-mix(in lch, canvasText, transparent 70%);;
+	--size: 45px;
+
+	content: '';
+	background: linear-gradient( 90deg, var(--line) 1px, transparent 1px var(--size) ) 50% 50% / var(--size) var(--size), linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size) var(--size);
+	mask: linear-gradient(-20deg, transparent 50%, white);
+	-webkit-mask: linear-gradient(-20deg, transparent 50%, white);
+	transform-style: flat;
+	pointer-events: none;
+	position: sticky;
+	width: 100dvw;
+	height: 100dvh;
+	top: 0;
+	bottom: 0;
+	margin: auto 0;
+	box-sizing: border-box;
+	z-index: 26;
 }

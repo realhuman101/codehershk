@@ -1,3 +1,7 @@
+section {
+	position: relative;
+}
+
 /* ------------ */
 /* HERO SECTION */
 /* ------------ */
@@ -14,7 +18,6 @@
     overflow: hidden;
 	padding-top: env(safe-area-inset-top);
     min-height: -webkit-fill-available;
-	position: relative;
 }
 
 #hero .h1, #hero .h2 {
@@ -35,7 +38,6 @@
 
 #hero .h2.i {
 	margin-top: auto;
-	position: relative;
 	font-weight: 700;
 }
 

@@ -17,6 +17,7 @@ interface NavBarProps {
   autoSlide?: boolean
   updateHash?: boolean
   fadeIn?: boolean
+  fixedPlace?: boolean
 }
 
 export default ({ 
@@ -25,7 +26,8 @@ export default ({
   autoSlide = false,
   updateHash = true,
   style = {},
-  fadeIn = false
+  fadeIn = false,
+  fixedPlace = true
 }: NavBarProps) => {
 	const [selected, setSelected] = useState(0)
 	const [isFixed, setIsFixed] = useState(false)
@@ -36,27 +38,28 @@ export default ({
 	const scrollTimeoutRef = useRef<NodeJS.Timeout>(null)
 	const lastScrollTime = useRef<number>(0)
 
-	useEffect(() => {
-		const checkPosition = () => {
-		  if (!navRef.current) return
-		  
-		  if (originalPositionRef.current === null) {
-			originalPositionRef.current = navRef.current.getBoundingClientRect().top + window.scrollY
-		  }
-	
-		  const scrollPosition = window.scrollY
-		  setIsFixed(scrollPosition >= originalPositionRef.current)
-		}
-		checkPosition()
+	if (fixedPlace)
+		useEffect(() => {
+			const checkPosition = () => {
+			if (!navRef.current) return
+			
+			if (originalPositionRef.current === null) {
+				originalPositionRef.current = navRef.current.getBoundingClientRect().top + window.scrollY
+			}
+		
+			const scrollPosition = window.scrollY
+			setIsFixed(scrollPosition >= originalPositionRef.current)
+			}
+			checkPosition()
 
-		window.addEventListener('scroll', checkPosition)
-		window.addEventListener('resize', checkPosition)
+			window.addEventListener('scroll', checkPosition)
+			window.addEventListener('resize', checkPosition)
 
-		return () => {
-		window.removeEventListener('scroll', checkPosition)
-		window.removeEventListener('resize', checkPosition)
-		}
-	}, [])
+			return () => {
+			window.removeEventListener('scroll', checkPosition)
+			window.removeEventListener('resize', checkPosition)
+			}
+		}, [])
 
 	const getNearestSection = useCallback(() => {
 		let nearest = 0

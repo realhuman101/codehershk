@@ -42,6 +42,7 @@ export default ({
     left: 0,
     overflow: 'hidden',
     background: 'transparent',
+    zIndex: -1
   }
   
   style = Object.assign({}, defaultStyling, style);

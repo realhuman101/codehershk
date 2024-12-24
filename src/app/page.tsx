@@ -37,7 +37,7 @@ export default function Home() {
 
   return (
     <div className='page'>
-      <Loading/>
+      {/* <Loading/> */}
 
       <Navbar/>
 
@@ -53,7 +53,7 @@ export default function Home() {
         shape="plane"
         speed={0.00025}
         style={{ 
-          position: 'absolute',
+          position: 'fixed',
           zIndex: 0,
           top: 0,
           left: 0,
@@ -88,6 +88,15 @@ export default function Home() {
               delay={2300}
             >future </Typewriter>
           </div>
+          <motion.button style={{ 
+            border: 'white 3px solid',
+            backgroundColor: 'transparent',
+            fontWeight: '300'
+           }}
+           initial={{ opacity: 0 }}
+           animate={{ opacity: 1 }}
+           transition={{ delay: 2500 }}
+           >Learn More</motion.button>
 
           {/* <HalftoneGradient className={styles.transition} rows={windowSize.y < 400 ? (windowSize.y < 350 ? 4 : 5) : 6} cols={Math.floor((windowSize.x / 10))+1}/> */}
       
@@ -107,46 +116,21 @@ export default function Home() {
           </svg>
       </section>
 
-        <br style={{ height: '15px' }} />
 
+       
+
+      <div id="contentWrap">
+        <section id="about">
+
+        </section>
+        
         <MiniNav items={[
-          { text: 'About', sectionId: 'about' },
-          { text: 'Events', sectionId: 'events' },
-          { text: 'Partners', sectionId: 'partners' }
+          { text: 'About', sectionId: 'about' }
         ]} 
           fadeIn={true}
+          fixedPlace={false}
         />
-
-      <section id='about'>
-        <Blob type={"aurora"}/>
-        <AnimatedText className={'mainTitle'} type={'slideDown'} config={{ duration: 0.2 }}>About</AnimatedText>
-        <AnimatedText type={'wordByWord'}>We are CodeHers - empowering women with a wide range of workshops, competitions, and experiences which they'll never forget.</AnimatedText>
-        
-        <div className={'mainFeatureBox'}>
-          <div>
-            <h1>Workshops</h1>
-            <p>
-              Hosted by professionals
-            </p>
-            <h1>Competitions</h1>
-            <p>
-              Compete against your peers!
-            </p>
-            <h1>Develop</h1>
-            <p>
-              Develop innovative products
-            </p>
-          </div>
-        </div>
-        
-        <ParallaxButton className="backgroundMovingGradient" textTriggerDistance={200} textIntensity={0.07}>Learn More</ParallaxButton>
-      </section>
-
-      <section id='events' style={{ height: '900px', backgroundColor: '#ff00ff' }}>
-      </section>
-
-      <section id='partners' style={{ height: '900px', backgroundColor: '#00ffff' }}>
-      </section>
+      </div>
 
       <Footer/>
     </div>
