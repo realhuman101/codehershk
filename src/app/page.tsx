@@ -21,64 +21,35 @@ import AnimatedText from "@/components/AnimatedText";
 
 import pictures from "@/imgs/event/pictures";
 
-
-type AnimationConfig = {
-  feature: string;
-  ref: React.RefObject<HTMLDivElement>;
-  inputs: number[];
-  outputs: number[];
-  linked: boolean;
-};
-
-type TransformConfig = {
-  [id: string]: {
-    transform: MotionValue<number>;
-    scrollYProgress: MotionValue<number>;
-  }
-}
-
 export default function Home() {
   const [ windowSize, setWindowSize ] = useState({ x: 0, y: 0 });
   const { scrollYProgress } = useScroll();
   const learnMoreButton = useRef<HTMLButtonElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null) 
+  const aboutTitleRef = useRef(null)
 
-  const animationRefs = {
-    hero: useRef<HTMLDivElement>(null)
-  };
+  const { scrollYProgress: heroScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"]
+  });
 
-  const [scrollAnimations, setScrollAnimations] = useState<TransformConfig>({});
+  const { scrollYProgress: aboutScrollProgress } = useScroll({
+    target: heroRef,
+    offset: ['end end', 'end start']
+  });
 
-  useEffect(() => {
-    const config: AnimationConfig[] = [
-      {
-        //@ts-expect-error STFU
-        ref: animationRefs.hero,
-        feature: "heroScale",
-        inputs: [0, 100],
-        outputs: [1, 0.05],
-        linked: true
-      }
-    ];
+  const heroScale = useTransform(
+    heroScrollProgress,
+    [0, 1],
+    [1, 0.05]
+  );
 
-    const animations: TransformConfig = {};
-    
-    config.forEach((item) => {
-      if (item.ref.current) {
-        const { scrollYProgress } = useScroll({
-          //@ts-expect-error STFU
-          target: item.ref.current
-        });
-        const transform = useTransform(scrollYProgress, item.inputs, item.outputs);
-
-        animations[item.feature] = {
-          transform,
-          scrollYProgress
-        };
-      }
-    });
-
-    setScrollAnimations(animations);
-  }, []);
+  const aboutTitleTransforms = {
+    fontSize: useTransform(aboutScrollProgress, [0, 1], ['25vw', '5vw']),
+    position: useTransform(aboutScrollProgress, (pos) => {
+      return pos === 1 ? 'fixed' : 'relative'
+    })
+  }
 
   useEffect(() => {
     function getSize() {
@@ -123,7 +94,7 @@ export default function Home() {
         
       {/* Hero section */}
       <section id='hero'>
-          <motion.div style={{ scale: scrollAnimations["heroScale"]?.transform, display: 'flex', flexDirection: 'column' }}>
+          <motion.div ref={heroRef} style={{ scale: heroScale, display: 'flex', flexDirection: 'column' }}>
             <Typewriter className='h1'>CodeHers</Typewriter>
             <div>
               <Typewriter 
@@ -183,7 +154,7 @@ export default function Home() {
 
       <div id="contentWrap">
         <section id="about">
-            <motion.h1 style={{ scale: scrollAnimations["heroScale"]?.transform, fontSize: '200px' }}>ABOUT</motion.h1>
+            <motion.h1 ref={aboutTitleRef} style={{ fontSize: aboutTitleTransforms.fontSize, position: aboutTitleTransforms.position, zIndex: 2, top: 0, margin: '0 auto' }}>ABOUT</motion.h1>
         </section>
         
         <MiniNav items={[
@@ -193,6 +164,8 @@ export default function Home() {
           fixedPlace={false}
         />
       </div>
+
+      <div style={{ height: '500px', padding: '1000px', width: '100vw' }}/>
 
       <Footer/>
     </div>
