@@ -38,7 +38,7 @@ function About() {
 
   return <section id="about" ref={sectionRef}>
     {/* <motion.h1 style={{ fontSize: titleTransforms.fontSize, position: titleTransforms.position, zIndex: 2, top: 0, margin: '0 auto' }}>ABOUT</motion.h1> */}
-    <AnimatedText type='letterByLetter' textStyle={{fontSize: '50px', fontFamily: 'Coolvetica', color: '#067b29'}}>About</AnimatedText>    
+    <AnimatedText type='letterByLetter' textStyle={{fontSize: '50px', fontFamily: 'Coolvetica', color: '#afd8bd'}}>About</AnimatedText>    
     <AnimatedText type='wordByWord'>This is a test</AnimatedText>
   </section>
 }
@@ -103,7 +103,7 @@ export default function Home() {
         
       {/* Hero section */}
       <section id='hero'>
-          <motion.div ref={heroRef} style={{ scale: heroScale, display: 'flex', flexDirection: 'column' }}>
+          <motion.div ref={heroRef} style={{ /*scale: heroScale,*/ display: 'flex', flexDirection: 'column' }}>
             <Typewriter className='h1'>CodeHers</Typewriter>
             <div>
               <Typewriter 
@@ -177,7 +177,7 @@ export default function Home() {
         />
       </div>
 
-      <div style={{ height: '500px', padding: '1000px', width: '100vw' }}/>
+      {/* <div style={{ height: '500px', padding: '1000px', width: '100vw' }}/> */}
 
       <Footer/>
     </div>

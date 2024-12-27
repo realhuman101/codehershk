@@ -21,7 +21,7 @@ const mobileAndTabletCheck = () => {
       )
     )
       check = true;
-	  // @ts-expect-error opera does in fact exist ty
+    // @ts-expect-error opera does in fact exist ty
   })(navigator.userAgent || navigator.vendor || window.opera);
   return check;
 };
@@ -34,11 +34,19 @@ const CustomCursor: React.FC = ({
 }: Props) => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
+  const [isHoveringClickable, setIsHoveringClickable] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
       setVisible(true);
+
+      // Check if the element under the cursor is clickable
+      const element = document.elementFromPoint(event.clientX, event.clientY);
+      if (element) {
+        const computedStyle = window.getComputedStyle(element);
+        setIsHoveringClickable(computedStyle.cursor === 'pointer');
+      }
     };
 
     const handleMouseOut = (event: MouseEvent) => {
@@ -71,7 +79,6 @@ const CustomCursor: React.FC = ({
     window.addEventListener("blur", handleWindowBlur);
     window.addEventListener("focus", handleWindowFocus);
 
-    // Immediately fetch the current mouse position
     document.addEventListener("mousemove", initializePosition, { once: true });
 
     return () => {
@@ -87,10 +94,10 @@ const CustomCursor: React.FC = ({
 
   return (
     <motion.div
-      className={styles.customCursor}
+      className={`${styles.customCursor} ${isHoveringClickable ? styles.smaller : ''}`}
       animate={{
-        x: mousePosition.x - width / 2,
-        y: mousePosition.y - height / 2,
+        x: mousePosition.x - (isHoveringClickable ? 7.5 : width / 2),
+        y: mousePosition.y - (isHoveringClickable ? 7.5 : height / 2),
       }}
       transition={{
         type: "spring",
