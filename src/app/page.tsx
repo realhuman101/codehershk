@@ -21,21 +21,37 @@ import AnimatedText from "@/components/AnimatedText";
 
 import pictures from "@/imgs/event/pictures";
 
+function About() {
+  const sectionRef = useRef(null)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start']
+  });
+
+  const titleTransforms = {
+      fontSize: useTransform(scrollYProgress, [0, 1], ['25vw', '5vw']),
+      position: useTransform(scrollYProgress, (pos) => {
+        return pos === 1 ? 'fixed' : 'relative'
+      })
+  }
+
+  return <section id="about" ref={sectionRef}>
+    {/* <motion.h1 style={{ fontSize: titleTransforms.fontSize, position: titleTransforms.position, zIndex: 2, top: 0, margin: '0 auto' }}>ABOUT</motion.h1> */}
+    <AnimatedText type='letterByLetter' textStyle={{fontSize: '50px', fontFamily: 'Coolvetica', color: '#067b29'}}>About</AnimatedText>    
+    <AnimatedText type='wordByWord'>This is a test</AnimatedText>
+  </section>
+}
+
 export default function Home() {
   const [ windowSize, setWindowSize ] = useState({ x: 0, y: 0 });
   const { scrollYProgress } = useScroll();
   const learnMoreButton = useRef<HTMLButtonElement>(null);
   const heroRef = useRef<HTMLDivElement>(null) 
-  const aboutTitleRef = useRef(null)
 
   const { scrollYProgress: heroScrollProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"]
-  });
-
-  const { scrollYProgress: aboutScrollProgress } = useScroll({
-    target: heroRef,
-    offset: ['end end', 'end start']
   });
 
   const heroScale = useTransform(
@@ -43,13 +59,6 @@ export default function Home() {
     [0, 1],
     [1, 0.05]
   );
-
-  const aboutTitleTransforms = {
-    fontSize: useTransform(aboutScrollProgress, [0, 1], ['25vw', '5vw']),
-    position: useTransform(aboutScrollProgress, (pos) => {
-      return pos === 1 ? 'fixed' : 'relative'
-    })
-  }
 
   useEffect(() => {
     function getSize() {
@@ -153,11 +162,14 @@ export default function Home() {
       </section>
 
       <div id="contentWrap">
-        <section id="about">
-            <motion.h1 ref={aboutTitleRef} style={{ fontSize: aboutTitleTransforms.fontSize, position: aboutTitleTransforms.position, zIndex: 2, top: 0, margin: '0 auto' }}>ABOUT</motion.h1>
-        </section>
+        <About />
         
-        <MiniNav items={[
+        <MiniNav style={{ 
+          position: 'absolute',
+          bottom: '20px',
+          zIndex: 20
+        }}
+        items={[
           { text: 'About', sectionId: 'about' }
         ]} 
           fadeIn={true}

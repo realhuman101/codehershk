@@ -131,8 +131,8 @@ section {
 	padding: 20px 15px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
 	align-items: center;
+	gap: 20px;
 }
 
 .mainTitle {

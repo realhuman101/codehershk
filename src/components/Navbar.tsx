@@ -87,7 +87,7 @@ const Navbar = () => {
                                     className="bg-panel first"
                                     initial={{ x: '100%' }}
                                     animate={{ x: 0 }}
-                                    transition={{ delay: 0, ease: "easeInOut" }}
+                                    transition={{ delay: 0, ease: "easeIn" }}
                                 />
                                 <motion.div
                                     className="bg-panel second"

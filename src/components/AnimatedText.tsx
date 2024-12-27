@@ -1,4 +1,5 @@
 import { motion, Variant, Variants } from 'framer-motion';
+import React from 'react';
 
 type AnimationType = 
   | 'fadeIn' 
@@ -38,6 +39,7 @@ interface AnimationConfig {
   viewportMargin?: string;
   viewportAmount?: number;
   once?: boolean;
+  yOffset?: number;
 }
 
 interface Props {
@@ -45,6 +47,8 @@ interface Props {
   children?: React.ReactElement | string;
   className?: string;
   config?: AnimationConfig;
+  style?: React.CSSProperties;
+  textStyle?: React.CSSProperties;
 }
 
 const defaultConfig: AnimationConfig = {
@@ -63,14 +67,17 @@ const defaultConfig: AnimationConfig = {
   staggerChildren: 0.05,
   viewportMargin: "-100px",
   viewportAmount: 0.1,
-  once: true
+  once: true,
+  yOffset: 50
 };
 
 export default ({ 
   type, 
   children = '', 
   className = '',
-  config = {}
+  config = {},
+  style = {},
+  textStyle = {}
 }: Props) => {
   if (typeof children !== 'string') return
 
@@ -211,25 +218,31 @@ export default ({
           }
         };
         break;
-    }
+      }
+      
+      return baseVariants;
+    };
+    
+    // Special handling for letter-by-letter and word-by-word animations
+  const defaultStyle: React.CSSProperties = {};
+    
+  if (type === 'letterByLetter' || type === 'wordByWord') {
+    defaultStyle.overflowY = 'hidden';
+    defaultStyle.height = 'fit-content';
+  }
 
-    return baseVariants;
-  };
-
-  // Special handling for letter-by-letter and word-by-word animations
   const getTextElements = () => {
     if (type === 'letterByLetter') {
       return children.split('').map((char, index) => (
         <motion.span
           key={index}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 }
-          }}
+          initial={{ y: finalConfig.yOffset }}
+          whileInView={{ y: 0 }}
           transition={{
-            delay: index * finalConfig.staggerChildren!
+            delay: index * finalConfig.staggerChildren!,
+            ease: 'easeInOut'
           }}
-          style={{ display: 'inline-block' }}
+          style={{...{ display: 'inline-block' }, ...textStyle}}
         >
           {char === ' ' ? '\u00A0' : char}
         </motion.span>
@@ -240,14 +253,13 @@ export default ({
       return children.split(' ').map((word, index) => (
         <motion.span
           key={index}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 }
-          }}
+          initial={{ y: finalConfig.yOffset }}
+          whileInView={{ y: 0 }}
           transition={{
-            delay: index * finalConfig.staggerChildren!
+            delay: index * finalConfig.staggerChildren!,
+            ease: 'easeInOut'
           }}
-          style={{ display: 'inline-block', marginRight: '0.3em' }}
+          style={{...{ display: 'inline-block', marginRight: '0.3em' }, ...textStyle}}
         >
           {word}
         </motion.span>
@@ -271,6 +283,7 @@ export default ({
       }}
       variants={variants}
       transition={type === 'elasticScale' ? springTransition : tweenTransition}
+      style={{...defaultStyle, ...style}}
     >
       {getTextElements()}
     </motion.div>
