@@ -83,8 +83,7 @@ export default function Home() {
       <CustomCursor stiffness={1000} damping={25}/>
 
       <ShaderGradient
-        // colors={['#ff5005', '#dbba95', '#d0bce1']}
-        colors={['#ffa1e4', '#d9daff', '#d9fff0']}
+        colors={['#ffb3ec','#ffe6ea', '#b3d4ff']}
         noiseStrength={0.6}
         noiseDensity={0.2}
         animate={true}
@@ -127,25 +126,27 @@ export default function Home() {
                 >future </Typewriter>
             </div>
 
-            <motion.button style={{ 
+            {/* <motion.button style={{ 
               border: 'white 3px solid',
               backgroundColor: 'transparent',
               fontWeight: '300',
-              marginTop: '5px'
+              marginTop: '20px'
             }}
 
-            // onMouseOver={()=>{if (learnMoreButton) {learnMoreButton.current.style.backgroundColor = 'white';learnMoreButton.current.style.color = '#ff7895'}}}
-            // onMouseLeave={()=>{if (learnMoreButton) {learnMoreButton.current.style.backgroundColor = 'transparent';learnMoreButton.current.style.color = 'white'}}}
+            //@ts-expect-error stfu
+            onMouseOver={()=>{if (learnMoreButton) {learnMoreButton.current.style.backgroundColor = 'white';learnMoreButton.current.style.color = '#ff7895';learnMoreButton.current.style.cursor = 'pointer'}}}
+            //@ts-expect-error stfu
+            onMouseLeave={()=>{if (learnMoreButton) {learnMoreButton.current.style.backgroundColor = 'transparent';learnMoreButton.current.style.color = 'white';learnMoreButton.current.style.cursor = 'default'}}}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 2500 }}
+            transition={{ delay: 3 }}
             ref={learnMoreButton}
-            >Learn More</motion.button>
+            >Learn More</motion.button> */}
           </motion.div>
 
           {/* <HalftoneGradient className={styles.transition} rows={windowSize.y < 400 ? (windowSize.y < 350 ? 4 : 5) : 6} cols={Math.floor((windowSize.x / 10))+1}/> */}
       
-          <svg className='waves' xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+          {/* <svg className='waves' xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
             <defs>
                 <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/>
             </defs>
@@ -158,10 +159,10 @@ export default function Home() {
             <g className='wave3'>
                 <use href="#wave-path" x="50" y="9"/>
             </g>
-          </svg>
+          </svg> */}
       </section>
 
-      <div id="contentWrap">
+      {/* <div id="contentWrap">
         <About />
         
         <MiniNav style={{ 
@@ -175,11 +176,11 @@ export default function Home() {
           fadeIn={true}
           fixedPlace={false}
         />
-      </div>
+      </div> */}
 
       {/* <div style={{ height: '500px', padding: '1000px', width: '100vw' }}/> */}
 
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

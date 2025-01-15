@@ -29,8 +29,8 @@ const mobileAndTabletCheck = () => {
 const CustomCursor: React.FC = ({
   stiffness = 300,
   damping = 20,
-  width = 50,
-  height = 50,
+  width = 25,
+  height = 25,
 }: Props) => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
