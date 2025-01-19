@@ -27,12 +27,12 @@ section {
 }
 
 #hero .h1 {
-	font-size: 15vw;
+	font-size: 13.7vw;
 	font-family: "Coolvetica";
 }
 
 #hero .h2 {
-	font-size: 8vw;
+	font-size: 5vw;
 	opacity: .8;
 }
 
@@ -48,7 +48,21 @@ section {
 	align-items: center;
 }
 
-@media (min-width: 965px) {
+@media (min-width: 1000px) {
+	#hero .h1 {
+		font-size: 100px;
+	}
+
+	#hero .h2 {
+		font-size: 50px;
+	}
+
+	#hero div {
+		gap: 15px;
+	}
+}
+
+@media (min-width: 2000px) {
 	#hero .h1 {
 		font-size: 145px;
 	}
