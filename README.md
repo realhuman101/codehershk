@@ -41,7 +41,7 @@ This project is licensed under the MIT license. See our [LICENSE](LICENSE) for m
 
 We would like to thank the following people and organizations for their support and contributions to this project:
 
-- [Audrey Lai](https://website.com/) for originally founding CodeHers HK.
+- Audrey Lam for originally founding CodeHers HK.
 - [Paul Baumgarten](https://pbaumgarten.com) for supporting us and supervising our project.
 
 And special thanks to all of our members on the organising team, our volunteers, supporting staff, and special sponsors who helped make this all possible.
