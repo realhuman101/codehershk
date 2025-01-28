@@ -499,6 +499,8 @@ b {
 /* -------- */
 
 .nav_bar {
+	--bar-color: #ff7895;
+
 	position: fixed;
 	display: flex;
 	margin: 10px;
@@ -508,17 +510,17 @@ b {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 10px 10px;
-	border-radius: 40%;
+	padding: 12px;
+	border-radius: 50%;
 	z-index: 999999;
 	width: fit-content;
 	height: fit-content;
-	background: rgba(255,255,255, 0);
+	background: rgb(255,255,255);
 }
 
 .bar1 {
 	border-radius: 30px;
-	background-color: #067b29;
+	background-color: var(--bar-color);
 	width: 30px;
 	margin-bottom: 6px;
 	transition: 0.4s;
@@ -527,7 +529,7 @@ b {
 
 .bar2 {
 	border-radius: 30px;
-	background-color: #067b29;
+	background-color: var(--bar-color);
 	width: 30px;
 	position: absolute;
 	transition: 0.4s;
@@ -536,7 +538,7 @@ b {
 
 .bar3_h {
 	border-radius: 30px;
-	background-color: #067b29;
+	background-color: var(--bar-color);
 	width: 30px;
 	transition: 0.4s;
 	height: 5px;
@@ -544,7 +546,7 @@ b {
 
 .bar4 {
 	border-radius: 30px;
-	background-color: #067b29;
+	background-color: var(--bar-color);
 	width: 30px;
 	margin-top: 6px;
 	transition: 0.4s;
