@@ -3,33 +3,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import pics25 from "./pics25";
+
+// 1) Import the Splide components and default CSS
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
 
 export default function EventArchivePage() {
-  const [selectedYear, setSelectedYear] = useState<"2024" | "2023" | "2022">(
-    "2024"
-  );
+  const [selectedYear, setSelectedYear] = useState<string>("2024");
 
   const eventsData = {
     "2024": {
-      funFact: "We doubled attendance in our second year, hosting 300 participants!",
+      funFact: "Our first event!",
       participants: 300,
-      workshops: 5,
-      photos: ["/photos/2024-1.jpg", "/photos/2024-2.jpg"],
+      workshops: 25,
+      photos: pics25,
     },
-    "2023": {
-      funFact: "Our first official CodeHers event with 200 participants!",
-      participants: 200,
-      workshops: 3,
-      photos: ["/photos/2023-1.jpg", "/photos/2023-2.jpg"],
-    },
-    "2022": {
-      funFact: "A small pilot with just 50 participants—big ideas start small!",
-      participants: 50,
-      workshops: 1,
-      photos: ["/photos/2022-1.jpg"],
-    },
+    // "2023": { ... },
+    // "2022": { ... },
   } as const;
 
+  //@ts-expect-error stfu
   const current = eventsData[selectedYear];
 
   return (
@@ -46,7 +40,7 @@ export default function EventArchivePage() {
 
       {/* Year Buttons */}
       <section className="flex space-x-3">
-        {(["2024", "2023", "2022"] as const).map((year) => (
+        {Object.keys(eventsData).map((year) => (
           <button
             key={year}
             onClick={() => setSelectedYear(year)}
@@ -72,24 +66,45 @@ export default function EventArchivePage() {
           Workshops: <strong>{current.workshops}</strong>
         </p>
 
-        {/* Photo Grid */}
-        <div className="grid grid-cols-2 gap-4 mt-4">
+        {/* Infinite Carousel with Splide */}
+        <Splide
+          className="mt-4"
+          options={{
+            type: "loop",
+            gap: "1rem",
+            autoplay: true,      // Auto-start sliding
+            interval: 3000,      // Delay between slides in ms
+            pauseOnHover: false, // Don't pause on hover
+            perPage: 2,          // How many slides per page
+            arrows: false,       // Hide next/prev arrows if you prefer
+            pagination: true,    // Show dots (pagination)
+          }}
+          aria-label="Event Photos"
+        >
+          {/* @ts-expect-error stfu */}
           {current.photos.map((src) => (
-            <div key={src} className="relative w-full h-32 bg-gray-200 rounded">
-              <Image src={src} alt="Event Photo" fill className="object-cover" />
-            </div>
+            <SplideSlide key={src}>
+              <div className="relative w-full h-32 bg-gray-200 rounded">
+                <Image
+                  src={src}
+                  alt="Event Photo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </SplideSlide>
           ))}
-        </div>
+        </Splide>
 
         <div className="flex space-x-3 pt-2">
           <Link
-            href="/current-events"
+            href="/events"
             className="px-4 py-2 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-all"
           >
             Check Current Event
           </Link>
           <Link
-            href="/partner"
+            href="/partners"
             className="px-4 py-2 bg-accent-500 text-white font-medium rounded-lg hover:bg-accent-600 transition-all"
           >
             Partner With Us

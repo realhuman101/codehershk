@@ -14,7 +14,7 @@ export default function WorkshopsSection() {
       >
         <Image
           alt={workshop.title}
-          src={isProd ? '/codehershk/' + `/workshop-icons/${workshop.icon}` : `/workshop-icons/${workshop.icon}`}
+          src={isProd ? '/codehershk/' + `workshop-icons/${workshop.icon}` : `/workshop-icons/${workshop.icon}`}
           width={0}
           height={0}
           className="w-10 h-10 mb-3"
