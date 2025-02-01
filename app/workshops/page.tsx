@@ -3,7 +3,7 @@ import getSchedule from "../components/GetScheduleData";
 import Accordion from "../components/Accordion";
 
 async function SessionSection({ session, index }: { session: any, index: any }) {
-  const workshops = await getWorkshops();
+  const workshops = getWorkshops();
   // console.log(session);
   return (
     <div key={index} className="mt-8">
@@ -13,7 +13,7 @@ async function SessionSection({ session, index }: { session: any, index: any }) 
         {session["workshopIDs"].map((workshopId: any, index: any) => {
           let workshop = workshops[workshopId - 1];
           return (
-            <Accordion key={index} title={workshop.title} content={workshop.description} index={workshop.id} author={workshop.by} category={workshop.category} />
+            <Accordion key={index} title={workshop.title} content={workshop.description} index={Number(workshop.id)} author={workshop.by} category={workshop.category} />
           );
         })}
       </div>
@@ -22,7 +22,7 @@ async function SessionSection({ session, index }: { session: any, index: any }) 
 }
 
 export default async function Workshops() {
-  const schedule = await getSchedule();
+  const schedule = getSchedule();
 
 
   const scheduleSections = schedule.map((session: any, index: any) => {

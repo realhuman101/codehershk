@@ -1,4 +1,4 @@
-export default async function getWorkshopsCategories () : Promise<any> {
+export default function getWorkshopsCategories () {
   const workshopsCategories = {
     "workshopsCategories": [
       {

@@ -6,6 +6,8 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function AboutPage() {
+  const isProd = process.env.NODE_ENV === 'production';
+
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
       {/* Title Section */}
@@ -40,7 +42,7 @@ export default function AboutPage() {
         </div>
         <div className="relative w-full h-56 bg-gray-200 rounded-lg lg:w-1/2 md:h-72">
           <Image
-            src="/team/Codehers Team.JPG"
+            src={isProd ? '/codehershk/' + "/team/Codehers Team.JPG" : "/team/Codehers Team.JPG"}
             alt="Core Committee Photo"
             fill
             className="object-cover rounded-lg"

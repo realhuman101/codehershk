@@ -16,6 +16,7 @@ type Partner = {
 };
 
 export default function PartnerPage() {
+  const isProd = process.env.NODE_ENV === 'production';
   // Original list of partner logos
   const partners: Partner[] = [
     { src: "/school-logos/CIS on white.jpeg", href: "https://www.cis.edu.hk/" },
@@ -77,7 +78,7 @@ export default function PartnerPage() {
                   className="w-full h-full flex items-center justify-center"
                 >
                   <Image
-                    src={partner.src}
+                    src={isProd ? '/codehershk/' + partner.src : partner.src} 
                     alt="Partner logo"
                     width={80}
                     height={40}

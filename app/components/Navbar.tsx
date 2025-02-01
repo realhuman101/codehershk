@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const isProd = process.env.NODE_ENV === 'production';
   return (
     <div>
       <nav className="fixed bg-white w-screen z-10 drop-shadow-md border-b border-pink-200/75">
@@ -14,7 +15,7 @@ export default function Navbar() {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <Image
-              src="/logos/CodeHers v2-1 color on transparent.png"
+              src={isProd ? '/codehershk/logos/CodeHers v2-1 color on transparent.png' : "/logos/CodeHers v2-1 color on transparent.png"}
               width="0"
               height="0"
               sizes="100vw"

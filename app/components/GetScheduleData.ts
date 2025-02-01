@@ -1,4 +1,4 @@
-export default async function getScheduleData () : Promise<any> {
+export default function getScheduleData () {
   const scheduleData = {
     "sessions": [
       {

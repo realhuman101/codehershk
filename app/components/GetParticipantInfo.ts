@@ -1,4 +1,4 @@
-export default async function getParticipantInfo () : Promise<any> {
+export default function getParticipantInfo () {
   const participantData = {
     "participants": [
       {

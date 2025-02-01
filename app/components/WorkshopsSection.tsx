@@ -2,8 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import getWorkshopsCategories from "./GetWorkshopsCategories";
 
-export default async function WorkshopsSection() {
-  const workshopsCategories = await getWorkshopsCategories();
+export default function WorkshopsSection() {
+  const workshopsCategories = getWorkshopsCategories();
+  const isProd = process.env.NODE_ENV === 'production';
 
   const workshopCards = workshopsCategories.map((workshop: any) => {
     return (
@@ -13,7 +14,7 @@ export default async function WorkshopsSection() {
       >
         <Image
           alt={workshop.title}
-          src={`/workshop-icons/${workshop.icon}`}
+          src={isProd ? '/codehershk/' + `/workshop-icons/${workshop.icon}` : `/workshop-icons/${workshop.icon}`}
           width={0}
           height={0}
           className="w-10 h-10 mb-3"

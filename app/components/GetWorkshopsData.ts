@@ -1,4 +1,4 @@
-export default async function getWorkshopsData () : Promise<any> {
+export default function getWorkshopsData () {
   // const file = await fs.readFile(process.cwd() + '/app/data/workshops.json', 'utf8');
   // const workshopData = JSON.parse(file)
 
