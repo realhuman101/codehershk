@@ -7,8 +7,8 @@ export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <div>
-      <nav className="fixed bg-background-100 w-screen z-10 drop-shadow-md border-b border-pink-200/75">
-        <div className="flex flex-wrap items-center justify-between w-full px-6 py-4 mx-auto md:px-32">
+      <nav className="fixed bg-white w-screen z-10 drop-shadow-md border-b border-pink-200/75">
+        <div className="flex flex-wrap items-center justify-between w-full px-6 py-4 mx-auto small:px-32">
           <Link
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -25,7 +25,7 @@ export default function Navbar() {
           <button
             data-collapse-toggle="navbar-default"
             type="button"
-            className="inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-secondary-700 md:hidden"
+            className="inline-flex items-center justify-center w-10 h-10 p-2 text-sm rounded-lg text-secondary-700 small:hidden"
             aria-controls="navbar-default"
             aria-expanded="false"
             onClick={() => setNavbarOpen(!navbarOpen)}
@@ -47,60 +47,52 @@ export default function Navbar() {
               />
             </svg>
           </button>
-          <div className={`justify-center w-full md:block md:w-auto ${navbarOpen && "hidden"}`} id="navbar-default">
-            <ul className="flex flex-col mt-4 text-lg font-medium rounded-lg md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
-            <li>
-                {/* <a
-                  href="/about"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 md:hover:text-text-400 md:p-0"
-                  >
-                  About
-                  </a> */}
-              </li>
-              <li>
+          <div className={`justify-center w-full h-full small:block small:w-auto ${navbarOpen && "hidden"}`} id="navbar-default">
+            <ul className="flex flex-col items-center h-full mt-4 text-lg font-medium rounded-lg small:p-0 small:flex-row small:space-x-8 rtl:space-x-reverse small:mt-0 small:h-auto">
+              <li className="flex items-center h-full">
                 <Link
                   href="/about"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 md:hover:text-text-400 md:p-0"
+                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 small:hover:text-text-400 small:p-0"
                 >
                   About Us
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center h-full">
                 <Link
                   href="/events"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 md:hover:text-text-400 md:p-0"
+                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 small:hover:text-text-400 small:p-0"
                 >
-                  2025
+                  Current Events
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center h-full">
                 <Link
                   href="/archive"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 md:hover:text-text-400 md:p-0"
+                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 small:hover:text-text-400 small:p-0"
                 >
                   Event Archive
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center h-full">
                 <Link
                   href="/partners"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 md:hover:text-text-400 md:p-0"
+                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 small:hover:text-text-400 small:p-0"
                 >
                   Partner With Us
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center h-full">
                 <Link
                   href="/contact"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 md:hover:text-text-400 md:p-0"
+                  className="block px-3 py-2 duration-150 ease-in rounded text-text-700 small:hover:text-text-400 small:p-0"
                 >
                   Contact Us
                 </Link>
               </li>
-              <li>
+              <li className="flex items-center h-full">
                 <Link
                   href="https://docs.google.com/forms/d/e/1FAIpQLSeecJLOzCaWIQ5ox6ofmv31NsMSm2gsM6k30e6_eY92oIJrbA/viewform"
-                  className="block px-3 py-2 duration-150 ease-in rounded text-accent-400 md:hover:text-accent-300 md:p-0"
+                  className="inline-flex items-center justify-center px-5 py-1 text-base font-medium leading-loose text-center text-white duration-300 rounded-lg bg-primary-500 hover:opacity-70 transitiona-all"
                   target="_blank"
                 >
                   Sign Up
@@ -109,8 +101,8 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
-    </nav>
-    <div className="h-[72px] w-10"/>
+      </nav>
+      <div className="h-[72px] w-10"/>
     </div>
   );
 }

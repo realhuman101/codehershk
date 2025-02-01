@@ -40,7 +40,7 @@ export default function AboutPage() {
         </div>
         <div className="relative w-full h-56 bg-gray-200 rounded-lg lg:w-1/2 md:h-72">
           <Image
-            src="/core-team-placeholder.jpg"
+            src="/team/Codehers Team.JPG"
             alt="Core Committee Photo"
             fill
             className="object-cover rounded-lg"

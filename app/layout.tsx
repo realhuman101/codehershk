@@ -14,9 +14,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "CodeHersHk",
+  title: "CodeHersHK",
   description:
-    "Inviting girls to challenge stereotypes in this traditionally male-dominated field.  ",
+    "Inviting girls to challenge stereotypes in this traditionally male-dominated field.",
   icons: {
     icon: "/favicon.ico",
   }

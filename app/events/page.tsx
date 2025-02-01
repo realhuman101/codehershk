@@ -16,26 +16,26 @@ export default function CurrentEventsPage() {
 
       {/* Event Cards (simplified, no flip) */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="p-6 bg-secondary-500/20 rounded-xl shadow space-y-2">
+        <div className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-2">
           <h3 className="text-xl font-bold text-text-900">CodeHers 2025</h3>
           <p className="text-text-700">
             Our annual flagship event! Join us for workshops, talks, and fun.
           </p>
           <Link
-            href="/current-events/codehers-2025"
+            href="/events/2025"
             className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-primary-500 hover:bg-primary-600 transition-all"
           >
             Learn More
           </Link>
         </div>
 
-        <div className="p-6 bg-secondary-500/20 rounded-xl shadow space-y-2">
+        <div className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-2">
           <h3 className="text-xl font-bold text-text-900">Hackathon</h3>
           <p className="text-text-700">
             Join our day-long hackathon to tackle real-world problems with code.
           </p>
           <Link
-            href="/current-events/hackathon"
+            href="/events/hackathon"
             className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-primary-500 hover:bg-primary-600 transition-all"
           >
             Learn More
@@ -44,7 +44,7 @@ export default function CurrentEventsPage() {
       </section>
 
       {/* “Catching Up with CodeHers” (Instagram) */}
-      <section className="p-6 bg-secondary-500/20 rounded-xl shadow space-y-4">
+      <section className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-4">
         <h2 className="text-2xl font-bold text-text-900">
           Catching Up with CodeHers
         </h2>

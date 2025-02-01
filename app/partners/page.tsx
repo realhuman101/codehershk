@@ -1,11 +1,41 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+
+import React from "react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
+import "@splidejs/react-splide/css";
 import { motion } from "framer-motion";
 
+import Link from "next/link";
+import Image from "next/image";
+
+/** Same partner type as before */
+type Partner = {
+  src: string;
+  href: string;
+};
+
 export default function PartnerPage() {
+  // Original list of partner logos
+  const partners: Partner[] = [
+    { src: "/school-logos/CIS on white.jpeg", href: "https://www.cis.edu.hk/" },
+    { src: "/school-logos/GSIS.png", href: "https://www.gsis.edu.hk/en/" },
+    { src: "/school-logos/Harrow on white.jpg", href: "https://www.harrowhongkong.hk/" },
+    { src: "/school-logos/HKIS.png", href: "https://www.hkis.edu.hk/" },
+    { src: "/school-logos/Kellett on white.jpg", href: "https://www.kellettschool.com/" },
+    { src: "/school-logos/ISF.png", href: "https://academy.isf.edu.hk/" },
+    { src: "/school-logos/KGV lion version.png", href: "https://www.kgv.edu.hk/" },
+    { src: "/school-logos/SIS logo only.png", href: "https://www.sis.edu.hk/" },
+    { src: "/school-logos/STC Logo.png", href: "https://shatincollege.edu.hk/" },
+    { src: "/school-logos/VSA.jpeg", href: "https://www.vsa.edu.hk/" },
+    { src: "/school-logos/WIS logo.png", href: "https://www.wis.edu.hk/" },
+  ];
+
+  // Optionally duplicate the array so there's a longer loop
+  const infinitePartners = [...partners, ...partners];
+
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
-      {/* Title */}
       <section className="pt-8">
         <h1 className="text-4xl font-extrabold tracking-wide text-text-900 sm:text-6xl mb-2">
           Partner With Us
@@ -15,33 +45,56 @@ export default function PartnerPage() {
         </p>
       </section>
 
-      {/* Carousel of existing partners or sponsor images */}
       <section className="bg-secondary-500/10 p-6 rounded-xl shadow">
         <h2 className="text-2xl font-semibold text-text-900 mb-4">
           Our Sponsors & Partners
         </h2>
-        {/* Example horizontal carousel with motion */}
-        <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-4"
-            initial={{ x: 0 }}
-            animate={{ x: -20 }}
-            transition={{ repeat: Infinity, repeatType: "reverse", duration: 5 }}
-          >
-            {/* Replace with your sponsor images */}
-            {["/partner1.png", "/partner2.png", "/partner3.png"].map((img) => (
-              <div
-                key={img}
-                className="w-40 h-20 flex-shrink-0 bg-white rounded-lg shadow flex items-center justify-center"
-              >
-                <Image src={img} alt="" width={100} height={40} />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+
+        <Splide
+          options={{
+            type: "loop",
+            drag: "free",
+            autoWidth: true,
+            gap: "10px",
+            arrows: false,
+            pagination: false, 
+            autoScroll: {
+              speed: 1,
+              pauseOnHover: true,
+              pauseOnFocus: false,
+            },
+          }}
+          extensions={{ AutoScroll }}
+          className="overflow-hidden"
+        >
+          {infinitePartners.map((partner, index) => (
+            <SplideSlide key={index}>
+              <motion.div className="w-40 h-20 bg-white rounded-lg shadow flex items-center justify-center" whileHover={{ scale: 1.05 }}>
+                <Link
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  <Image
+                    src={partner.src}
+                    alt="Partner logo"
+                    width={80}
+                    height={40}
+                    style={{
+                      width: "auto",
+                      height: "70px",
+                    }}
+                    className="object-contain p-2"
+                  />
+                </Link>
+              </motion.div>
+            </SplideSlide>
+          ))}
+        </Splide>
       </section>
 
-      {/* 3 ways to partner */}
+      {/* 3) Grid of Partner Cards */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <PartnerCard
           title="Sponsor Our Events"
@@ -57,7 +110,7 @@ export default function PartnerPage() {
         />
       </section>
 
-      {/* CTA */}
+      {/* 4) Contact / CTA Section */}
       <section className="pb-8">
         <h2 className="text-2xl font-bold text-text-900 mb-2">
           Have Another Idea?
@@ -76,13 +129,8 @@ export default function PartnerPage() {
   );
 }
 
-function PartnerCard({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
+/** Same 'PartnerCard' component from your code */
+function PartnerCard({ title, description }: { title: string; description: string }) {
   return (
     <div className="p-6 bg-white rounded-xl shadow space-y-2">
       <h3 className="text-xl font-semibold text-text-900">{title}</h3>
