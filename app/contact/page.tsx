@@ -108,19 +108,19 @@ export default function ContactPage() {
       <section className="space-y-2 pb-8">
         <p className="text-text-600">
           Prefer email? Reach us at:{" "}
-          <a href="mailto:codehers@example.com" className="text-primary-500 underline">
-            codehers@example.com
+          <a href="mailto:codehershk@gmail.com" className="text-primary-500 underline">
+            codehershk@gmail.com
           </a>
         </p>
         <p className="text-text-600">
           Or find us on Instagram:{" "}
           <a
-            href="https://instagram.com/yourcodehersaccount"
+            href="https://instagram.com/codehershk"
             target="_blank"
             rel="noreferrer"
             className="text-primary-500 underline"
           >
-            @yourcodehersaccount
+            @codehershk
           </a>
         </p>
       </section>

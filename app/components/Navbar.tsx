@@ -74,14 +74,14 @@ export default function Navbar() {
                   Event Archive
                 </Link>
               </li>
-              <li className="flex items-center h-full">
+              {/* <li className="flex items-center h-full">
                 <Link
                   href="/partners"
                   className="block px-3 py-2 duration-150 ease-in rounded text-text-700 small:hover:text-text-400 small:p-0"
                 >
                   Partner With Us
                 </Link>
-              </li>
+              </li> */}
               <li className="flex items-center h-full">
                 <Link
                   href="/contact"

@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-/** Same partner type as before */
 type Partner = {
   src: string;
   href: string;
@@ -17,22 +16,20 @@ type Partner = {
 
 export default function PartnerPage() {
   const isProd = process.env.NODE_ENV === 'production';
-  // Original list of partner logos
   const partners: Partner[] = [
     { src: "/school-logos/CIS on white.jpeg", href: "https://www.cis.edu.hk/" },
     { src: "/school-logos/GSIS.png", href: "https://www.gsis.edu.hk/en/" },
-    { src: "/school-logos/Harrow on white.jpg", href: "https://www.harrowhongkong.hk/" },
     { src: "/school-logos/HKIS.png", href: "https://www.hkis.edu.hk/" },
-    { src: "/school-logos/Kellett on white.jpg", href: "https://www.kellettschool.com/" },
+    { src: "/school-logos/Harrow on white.jpg", href: "https://www.harrowhongkong.hk/" },
     { src: "/school-logos/ISF.png", href: "https://academy.isf.edu.hk/" },
-    { src: "/school-logos/KGV lion version.png", href: "https://www.kgv.edu.hk/" },
-    { src: "/school-logos/SIS logo only.png", href: "https://www.sis.edu.hk/" },
-    { src: "/school-logos/STC Logo.png", href: "https://shatincollege.edu.hk/" },
+    { src: "/school-logos/KGV ESF version.png", href: "https://www.kgv.edu.hk/" },
+    { src: "/school-logos/Kellett on white.jpg", href: "https://www.kellettschool.com/" },
+    { src: "/school-logos/SIS-ESF-version.png", href: "https://www.sis.edu.hk/" },
+    { src: "/school-logos/STC on transparent.png", href: "https://shatincollege.edu.hk/" },
     { src: "/school-logos/VSA.jpeg", href: "https://www.vsa.edu.hk/" },
-    { src: "/school-logos/WIS logo.png", href: "https://www.wis.edu.hk/" },
+    { src: "/school-logos/WIS esf.png", href: "https://www.wis.edu.hk/" },
   ];
 
-  // Optionally duplicate the array so there's a longer loop
   const infinitePartners = [...partners, ...partners];
 
   return (
@@ -130,7 +127,6 @@ export default function PartnerPage() {
   );
 }
 
-/** Same 'PartnerCard' component from your code */
 function PartnerCard({ title, description }: { title: string; description: string }) {
   return (
     <div className="p-6 bg-white rounded-xl shadow space-y-2">

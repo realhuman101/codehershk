@@ -1,6 +1,13 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import WorkshopsSection from "./components/WorkshopsSection";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
+import { motion } from "framer-motion";
+
+import '@splidejs/react-splide/css';
 
 export default function Home() {
   return (
@@ -21,7 +28,7 @@ export default function Home() {
           <p></p>
           <div className="flex flex-col gap-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
             <Link
-              href="#event-section"
+              href="/about"
               className="relative top-0 inline-flex items-center justify-center px-8 py-2 text-base font-medium leading-loose text-center duration-300 ease-out rounded-lg hover:-top-2 transitiona-all bg-secondary-100 text-text-700"
             >
               Learn More
@@ -122,35 +129,22 @@ export default function Home() {
 function SchoolCredits() {
   const isProd = process.env.NODE_ENV === 'production';
 
-  const schoolLogos = [
-  { src: "/school-logos/CIS on white.jpeg" },
-  { src: "/school-logos/GSIS.png" },
-  { src: "/school-logos/Harrow on white.jpg" },
-  { src: "/school-logos/Kellett on white.jpg" },
-  { src: "/school-logos/KGV ESF version.png" },
-  { src: "/school-logos/STC on transparent.png" },
-  { src: "/school-logos/SIS ESF version.webp" },
-  { src: "/school-logos/VSA.jpeg" },
-  { src: "/school-logos/WIS ESF version.png" },
-  { src: "/school-logos/HKIS.png" },
-  { src: "/school-logos/ISF.png" }
+  const partners = [
+    { src: "/school-logos/CIS on white.jpeg", href: "https://www.cis.edu.hk/" },
+    { src: "/school-logos/GSIS.png", href: "https://www.gsis.edu.hk/en/" },
+    { src: "/school-logos/HKIS.png", href: "https://www.hkis.edu.hk/" },
+    { src: "/school-logos/Harrow on white.jpg", href: "https://www.harrowhongkong.hk/" },
+    { src: "/school-logos/ISF.png", href: "https://academy.isf.edu.hk/" },
+    { src: "/school-logos/KGV ESF version.png", href: "https://www.kgv.edu.hk/" },
+    { src: "/school-logos/Kellett on white.jpg", href: "https://www.kellettschool.com/" },
+    { src: "/school-logos/SIS-ESF-version.png", href: "https://www.sis.edu.hk/" },
+    { src: "/school-logos/STC on transparent.png", href: "https://shatincollege.edu.hk/" },
+    { src: "/school-logos/VSA.jpeg", href: "https://www.vsa.edu.hk/" },
+    { src: "/school-logos/WIS esf.png", href: "https://www.wis.edu.hk/" },
   ];
-  const schoolLogoImages = schoolLogos.map((img) => {
-    return (
-      <div
-        key={img.src}
-        className="flex items-center justify-center w-full p-2 bg-white rounded-lg grow lg:h-full"
-      >
-        <Image
-          src={isProd ? '/codehershk/' + img.src : img.src} alt={img.src}
-          width="0"
-          height="0"
-          sizes="100vw"
-          className="w-auto max-h-16"
-        />
-      </div>
-    );
-  });
+
+  const infinitePartners = [...partners, ...partners];
+
   return (
     <div className="flex flex-col items-center w-full py-10 space-y-12 md:py-16 h-full">
       <div className="flex flex-col space-y-4">
@@ -161,8 +155,52 @@ function SchoolCredits() {
           Proudly organised by students from these schools
         </h5>
       </div>
+
       <div className="grid w-full grid-cols-2 gap-3 px-8 py-6 rounded-lg lg:gap-1 bg-secondary-500/10 lg:h-32 justify-items-center md:grid-cols-3 lg:flex lg:flex-row lg:space-x-3 lg:items-center lg:justify-center xl:justify-around">
-        {schoolLogoImages}
+        <Splide
+          options={{
+            type: 'loop',
+            drag: 'free',
+            autoWidth: true,
+            gap: '10px',
+            arrows: false,
+            pagination: false,
+            autoScroll: {
+              speed: 1,
+              pauseOnHover: true,
+              pauseOnFocus: false,
+              rewind: false,
+            },
+          }}
+          extensions={{ AutoScroll }}
+          aria-label="School partners"
+          className="overflow-hidden"
+        >
+          {[...partners, ...partners].map((partner, index) => (
+            <SplideSlide key={index} className="flex items-center">
+              <motion.div
+                className="w-40 h-20 bg-white rounded-lg shadow-lg flex items-center justify-center mx-2"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Link
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full h-full flex items-center justify-center p-2"
+                >
+                  <Image
+                    src={isProd ? '/codehershk/' + partner.src : partner.src}
+                    alt="School logo"
+                    width={160}
+                    height={80}
+                    className="object-contain w-full h-full"
+                  />
+                </Link>
+              </motion.div>
+            </SplideSlide>
+          ))}
+        </Splide>
       </div>
     </div>
   );
