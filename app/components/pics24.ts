@@ -15,7 +15,7 @@ const list = ['/event/audreySpeech.jpg',
 
 export const all = (splice: number = -1): Array<string> => {
 	// python generated list
-	const items =  [
+	const items =  [ // total of 130 items
 		'/event/101709959172_.pic_hd.jpg',
 		'/event/111709959174_.pic_hd.jpg',
 		'/event/11709959150_.pic_hd.jpg',

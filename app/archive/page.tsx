@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
-import pics25 from "../components/pics25";
+import { all } from "../components/pics24";
 
 export default function EventArchivePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -74,13 +74,13 @@ export default function EventArchivePage() {
           }}
           aria-label="Event Photos"
         >
-          {pics25.map((src, index) => (
+          {all(50).map((src, index) => (
             <SplideSlide key={index}>
               <div
                 className="relative w-full h-72 bg-gray-200 rounded-lg cursor-pointer"
                 onClick={() => openModal(src)}
               >
-                <Image src={src} alt="Event Photo" fill className="object-cover rounded-lg" />
+                <Image src={src} alt="2024 Event Photo" fill className="object-cover rounded-lg" />
               </div>
             </SplideSlide>
           ))}

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
-import pics25 from "../../../components/pics25";
+import pics25 from "../../../components/pics24";
 
 export default function EventArchivePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);

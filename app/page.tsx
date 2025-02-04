@@ -6,7 +6,7 @@ import WorkshopsSection from "./components/WorkshopsSection";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import { motion } from "framer-motion";
-import pics25 from "./components/pics25";
+import pics24 from "./components/pics24";
 
 import '@splidejs/react-splide/css';
 
@@ -63,7 +63,7 @@ export default function Home() {
             }}
             className="rounded-xl shadow-lg overflow-hidden"
           >
-            {pics25.map((img, index) => (
+            {pics24.map((img, index) => (
               <SplideSlide key={index} className="overflow-hidden h-[400px] w-[600px]">
                 <Image
                   src={isProd ? '/codehershk/' + img : img}
