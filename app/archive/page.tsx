@@ -52,7 +52,7 @@ export default function EventArchivePage() {
           Participants: <strong>300</strong> &middot; Workshops: <strong>25</strong>
         </p>
 
-        {/* 📸 Image Carousel */}
+        {/* 📸 Responsive Image Carousel */}
         <Splide
           className="mt-4"
           options={{
@@ -61,9 +61,16 @@ export default function EventArchivePage() {
             autoplay: true,
             interval: 3000,
             pauseOnHover: true,
-            perPage: 2,
             arrows: true,
             pagination: true,
+            perPage: 4,
+            mediaQuery: "min",
+            breakpoints: {
+              640: { perPage: 1 }, // Small screens → 1 image at a time
+              768: { perPage: 2 }, // Medium screens → 2 images
+              1024: { perPage: 3 }, // Large screens → 3 images
+              1280: { perPage: 4 }, // Extra large screens → 4 images
+            },
           }}
           aria-label="Event Photos"
         >
@@ -99,7 +106,7 @@ export default function EventArchivePage() {
       {/* 🖼️ Full-Screen Image Modal */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 !m-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          className="fixed !m-0 inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
           onClick={closeModal} // Clicking outside closes modal
         >
           {/* Close Button (Top-Right of Screen) */}
@@ -110,7 +117,7 @@ export default function EventArchivePage() {
             ✕
           </button>
 
-          {/* Image Container (Prevents closing when clicking inside image) */}
+          {/* Image Container (Prevents click from closing modal) */}
           <div className="relative p-4 max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
             <Image
               src={selectedImage}

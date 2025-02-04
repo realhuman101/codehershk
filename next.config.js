@@ -7,5 +7,6 @@ const nextConfig = {
   images: { unoptimized: true },
   assetPrefix: isProd ? '/codehershk/' : '',
   basePath: isProd ? '/codehershk' : '',
+  // productionBrowserSourceMaps: false,
 }
 export default nextConfig;
