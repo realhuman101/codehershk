@@ -99,7 +99,7 @@ export default function CodeHers2025Page() {
           </div>
           <div className="grow md:w-1/2 lg:w-1/3 flex flex-col justify-center h-72 md:h-auto">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12..."
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3692.9566727193946!2d114.16393337356682!3d22.241722645019458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3406aaa0131d0785%3A0x379649d90714e1a7!2sVictoria%20Shanghai%20Academy!5e0!3m2!1sen!2shk!4v1738038640705!5m2!1sen!2shk" 
               className="w-full h-full md:h-2/3 lg:h-full rounded-xl"
               loading="lazy"
             ></iframe>
@@ -116,7 +116,7 @@ export default function CodeHers2025Page() {
             Sign up for CodeHers 2025 now!
           </h5>
         </div>
-        <div className="inline-flex rounded-md shadow py-10">
+        <div className="inline-flex rounded-md shadow">
           <Link
             href="https://docs.google.com/forms/d/e/1FAIpQLSeecJLOzCaWIQ5ox6ofmv31NsMSm2gsM6k30e6_eY92oIJrbA/viewform"
             className="inline-flex items-center justify-center w-full px-8 py-2 text-base font-medium leading-loose text-center text-white rounded-lg bg-primary-500 bg-gradient-to-r from-primary-500 to-accent-500"

@@ -1,6 +1,6 @@
-import getWorkshops from "../components/GetWorkshopsData";
-import getSchedule from "../components/GetScheduleData";
-import Accordion from "../components/Accordion";
+import getWorkshops from "../../../components/GetWorkshopsData";
+import getSchedule from "../../../components/GetScheduleData";
+import Accordion from "../../../components/Accordion";
 
 async function SessionSection({ session, index }: { session: any, index: any }) {
   const workshops = getWorkshops();

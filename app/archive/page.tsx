@@ -2,33 +2,39 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import pics25 from "../components/pics25";
-
-// 1) Import the Splide components and default CSS
+import { useState, useEffect } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
+import pics25 from "../components/pics25";
+
 export default function EventArchivePage() {
-  const [selectedYear, setSelectedYear] = useState<string>("2024");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
-  const eventsData = {
-    "2024": {
-      funFact: "Our first event!",
-      participants: 300,
-      workshops: 25,
-      photos: pics25,
-    },
-    // "2023": { ... },
-    // "2022": { ... },
-  } as const;
+  // Open Modal with Selected Image
+  const openModal = (image: string) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
 
-  //@ts-expect-error stfu
-  const current = eventsData[selectedYear];
+  // Close Modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // Handle "Escape" key press to close modal
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeModal();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
-      {/* Title */}
+      {/* Title Section */}
       <section className="pt-8">
         <h1 className="text-4xl font-extrabold tracking-wide text-text-900 sm:text-6xl mb-2">
           Event Archive
@@ -38,79 +44,84 @@ export default function EventArchivePage() {
         </p>
       </section>
 
-      {/* Year Buttons */}
-      <section className="flex space-x-3">
-        {Object.keys(eventsData).map((year) => (
-          <button
-            key={year}
-            onClick={() => setSelectedYear(year)}
-            className={`px-4 py-2 text-base font-medium rounded-lg transition-all ${
-              selectedYear === year
-                ? "bg-primary-500 text-white"
-                : "bg-secondary-100 text-text-800 hover:bg-secondary-200"
-            }`}
-          >
-            {year}
-          </button>
-        ))}
-      </section>
-
-      {/* Display Info */}
+      {/* Archive Section */}
       <section className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-4">
-        <h2 className="text-2xl font-bold text-text-900">
-          Archive for {selectedYear}
-        </h2>
-        <p className="text-text-600 italic">Fun Fact: {current.funFact}</p>
+        <h2 className="text-2xl font-bold text-text-900">Archive for 2024</h2>
+        <p className="text-text-600 italic">Fun Fact: Our first event!</p>
         <p className="text-text-700">
-          Participants: <strong>{current.participants}</strong> &middot;
-          Workshops: <strong>{current.workshops}</strong>
+          Participants: <strong>300</strong> &middot; Workshops: <strong>25</strong>
         </p>
 
-        {/* Infinite Carousel with Splide */}
+        {/* 📸 Image Carousel */}
         <Splide
           className="mt-4"
           options={{
             type: "loop",
             gap: "1rem",
-            autoplay: true,      // Auto-start sliding
-            interval: 3000,      // Delay between slides in ms
-            pauseOnHover: false, // Don't pause on hover
-            perPage: 2,          // How many slides per page
-            arrows: false,       // Hide next/prev arrows if you prefer
-            pagination: true,    // Show dots (pagination)
+            autoplay: true,
+            interval: 3000,
+            pauseOnHover: true,
+            perPage: 2,
+            arrows: true,
+            pagination: true,
           }}
           aria-label="Event Photos"
         >
-          {/* @ts-expect-error stfu */}
-          {current.photos.map((src) => (
-            <SplideSlide key={src}>
-              <div className="relative w-full h-32 bg-gray-200 rounded">
-                <Image
-                  src={src}
-                  alt="Event Photo"
-                  fill
-                  className="object-cover"
-                />
+          {pics25.map((src, index) => (
+            <SplideSlide key={index}>
+              <div
+                className="relative w-full h-72 bg-gray-200 rounded-lg cursor-pointer"
+                onClick={() => openModal(src)}
+              >
+                <Image src={src} alt="Event Photo" fill className="object-cover rounded-lg" />
               </div>
             </SplideSlide>
           ))}
         </Splide>
 
-        <div className="flex space-x-3 pt-2">
+        {/* CTA Links */}
+        <div className="flex space-x-3 pt-4">
+          <Link
+            href="/archive/2024/workshops"
+            className="px-4 py-2 bg-accent-500 text-white font-medium rounded-lg hover:bg-accent-600 transition-all"
+          >
+            View Past Workshops
+          </Link>
           <Link
             href="/events"
             className="px-4 py-2 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-all"
           >
             Check Current Event
           </Link>
-          <Link
-            href="/partners"
-            className="px-4 py-2 bg-accent-500 text-white font-medium rounded-lg hover:bg-accent-600 transition-all"
-          >
-            Partner With Us
-          </Link>
         </div>
       </section>
+
+      {/* 🖼️ Full-Screen Image Modal */}
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 !m-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          onClick={closeModal} // Clicking outside closes modal
+        >
+          {/* Close Button (Top-Right of Screen) */}
+          <button
+            className="fixed top-6 right-6 bg-white text-black px-4 py-2 rounded-full text-lg font-bold hover:bg-gray-200 z-50"
+            onClick={closeModal}
+          >
+            ✕
+          </button>
+
+          {/* Image Container (Prevents closing when clicking inside image) */}
+          <div className="relative p-4 max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
+            <Image
+              src={selectedImage}
+              alt="Full View"
+              width={1600}
+              height={900}
+              className="rounded-lg shadow-lg max-w-full max-h-screen object-contain"
+            />
+          </div>
+        </div>
+      )}
     </main>
   );
 }

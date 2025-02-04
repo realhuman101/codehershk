@@ -11,6 +11,8 @@ import pics25 from "./components/pics25";
 import '@splidejs/react-splide/css';
 
 export default function Home() {
+  const isProd = process.env.NODE_ENV === 'production';
+
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48">
       <div className="flex flex-col lg:flex-row pt-4 pb-10 lg:gap-8 gap-y-12 md:py-16 mb-10">
@@ -64,7 +66,7 @@ export default function Home() {
             {pics25.map((img, index) => (
               <SplideSlide key={index} className="overflow-hidden h-[400px] w-[600px]">
                 <Image
-                  src={img}
+                  src={isProd ? '/codehershk/' + img : img}
                   alt={img}
                   width={600}
                   height={400}
