@@ -11,12 +11,23 @@ export default function ContactPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      // If you have an API route, call it here:
-      // await fetch("/api/contact", {...})
-      setStatus("submitted");
-      setName("");
-      setEmail("");
-      setMessage("");
+      await fetch("https://formspree.io/f/xnnjvywe", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          message: message,
+        })
+      }).then((response) => {
+        if (200 <= response.status && response.status <= 299) {
+          setStatus("submitted")
+          setName("");
+          setEmail("");
+          setMessage("");
+        } else {
+          setStatus("error")
+        }
+      })
     } catch {
       setStatus("error");
     }

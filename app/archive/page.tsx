@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import pics25 from "./pics25";
+import pics25 from "../components/pics25";
 
 // 1) Import the Splide components and default CSS
 import { Splide, SplideSlide } from "@splidejs/react-splide";
