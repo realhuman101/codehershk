@@ -48,6 +48,49 @@ export default function Home() {
         <div></div>
       </div>
 
+      <div className="lg:w-1/2">
+        <Splide
+          options={{
+            type: "loop",
+            autoplay: true,
+            interval: 3000,
+            pauseOnHover: true,
+            arrows: true,
+            pagination: true,
+            speed: 800,
+          }}
+          className="rounded-xl shadow-lg overflow-hidden"
+        >
+          <SplideSlide>
+            <Image
+              src="/events/event1.jpg"
+              alt="CodeHers Event 1"
+              width={600}
+              height={400}
+              className="object-cover w-full h-full"
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <Image
+              src="/events/event2.jpg"
+              alt="CodeHers Event 2"
+              width={600}
+              height={400}
+              className="object-cover w-full h-full"
+            />
+          </SplideSlide>
+          <SplideSlide>
+            <Image
+              src="/events/event3.jpg"
+              alt="CodeHers Event 3"
+              width={600}
+              height={400}
+              className="object-cover w-full h-full"
+            />
+          </SplideSlide>
+        </Splide>
+      </div>
+
       <div
         id="event-section"
         className="flex flex-col bg-secondary-500/20 p-6 md:p-8 space-y-6 rounded-xl lg:py-12 lg:px-20"
