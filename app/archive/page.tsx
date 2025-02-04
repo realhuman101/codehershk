@@ -6,11 +6,12 @@ import { useState, useEffect } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 
-import { all } from "../components/pics24";
+import pics24, { all } from "../components/pics24";
 
 export default function EventArchivePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
+  const [photos, setPhotos] = useState<Array<string>>(pics24);
 
   // Open Modal with Selected Image
   const openModal = (image: string) => {
@@ -25,6 +26,8 @@ export default function EventArchivePage() {
 
   // Handle "Escape" key press to close modal
   useEffect(() => {
+    setPhotos(all(30));
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeModal();
     };
@@ -74,7 +77,7 @@ export default function EventArchivePage() {
           }}
           aria-label="Event Photos"
         >
-          {all(50).map((src, index) => (
+          {photos.map((src, index) => (
             <SplideSlide key={index}>
               <div
                 className="relative w-full h-72 bg-gray-200 rounded-lg cursor-pointer"
@@ -88,6 +91,13 @@ export default function EventArchivePage() {
 
         {/* CTA Links */}
         <div className="flex space-x-3 pt-4">
+        <Link
+            href="/archive/2024/images"
+            className="px-4 py-2 bg-accent-500 text-white font-medium rounded-lg hover:bg-accent-600 transition-all"
+          >
+            View All Event Photos
+        </Link>
+
           <Link
             href="/archive/2024/workshops"
             className="px-4 py-2 bg-accent-500 text-white font-medium rounded-lg hover:bg-accent-600 transition-all"
