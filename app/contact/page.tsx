@@ -1,41 +1,54 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function ContactPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "submitted" | "error">("idle");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      await fetch("https://formspree.io/f/xnnjvywe", {
+      const response = await fetch("https://formspree.io/f/xnnjvywe", {
         method: "POST",
         body: JSON.stringify({
           name: name,
           email: email,
           message: message,
-        })
-      }).then((response) => {
-        if (200 <= response.status && response.status <= 299) {
-          setStatus("submitted")
-          setName("");
-          setEmail("");
-          setMessage("");
-        } else {
-          setStatus("error")
-        }
-      })
+        }),
+      });
+
+      if (response.ok) {
+        setName("");
+        setEmail("");
+        setMessage("");
+        MySwal.fire({
+          icon: "success",
+          title: "Message Sent!",
+          text: "Thanks! Your message has been successfully submitted.",
+          confirmButtonColor: "#2563eb",
+        });
+      } else {
+        throw new Error("Submission failed");
+      }
     } catch {
-      setStatus("error");
+      MySwal.fire({
+        icon: "error",
+        title: "Oops!",
+        text: "Something went wrong. Please try again.",
+        confirmButtonColor: "#ef4444",
+      });
     }
   };
 
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
-      {/* Title */}
+      {/* Title Section */}
       <section className="pt-8">
         <h1 className="text-4xl font-extrabold tracking-wide text-text-900 sm:text-6xl mb-2">
           Contact Us
@@ -45,14 +58,11 @@ export default function ContactPage() {
         </p>
       </section>
 
-      {/* Form */}
+      {/* Form Section */}
       <section className="p-6 bg-white rounded-xl shadow space-y-4">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label
-              htmlFor="name"
-              className="block mb-1 font-medium text-text-800"
-            >
+            <label htmlFor="name" className="block mb-1 font-medium text-text-800">
               Name
             </label>
             <input
@@ -66,10 +76,7 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label
-              htmlFor="email"
-              className="block mb-1 font-medium text-text-800"
-            >
+            <label htmlFor="email" className="block mb-1 font-medium text-text-800">
               Email
             </label>
             <input
@@ -83,10 +90,7 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <label
-              htmlFor="message"
-              className="block mb-1 font-medium text-text-800"
-            >
+            <label htmlFor="message" className="block mb-1 font-medium text-text-800">
               Message
             </label>
             <textarea
@@ -105,17 +109,9 @@ export default function ContactPage() {
             Send
           </button>
         </form>
-
-        {/* Feedback */}
-        {status === "submitted" && (
-          <p className="mt-2 text-green-600">Thanks! Your message has been sent.</p>
-        )}
-        {status === "error" && (
-          <p className="mt-2 text-red-600">Oops, something went wrong. Please try again.</p>
-        )}
       </section>
 
-      {/* Additional Contact */}
+      {/* Additional Contact Info */}
       <section className="space-y-2 pb-8">
         <p className="text-text-600">
           Prefer email? Reach us at:{" "}
