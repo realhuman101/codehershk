@@ -1,8 +1,8 @@
 const isProd = process.env.NODE_ENV === 'production';
 
-const list = ['/event/audreySpeech.jpg',
+const list = ['/event/audreySpeech.jpeg',
 	'/event/electronics.jpg',
-	'/event/fullHall.jpg',
+	'/event/fullHall.JPG',
 	'/event/fullTeam.jpg',
 	'/event/fun.jpg',
 	'/event/gaming.jpg',
