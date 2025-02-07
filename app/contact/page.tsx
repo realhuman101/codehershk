@@ -14,15 +14,19 @@ export default function ContactPage() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://formspree.io/f/xnnjvywe", {
+      const response = await fetch("https://formspree.io/f/movjlwrl", {
         method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           name: name,
           email: email,
           message: message,
         }),
       });
-
+  
       if (response.ok) {
         setName("");
         setEmail("");
@@ -44,7 +48,7 @@ export default function ContactPage() {
         confirmButtonColor: "#ef4444",
       });
     }
-  };
+  };  
 
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
