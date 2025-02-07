@@ -168,5 +168,4 @@ export const all = (splice: number = -1, shuffled: boolean = true): Array<string
 		return items.splice(0, splice)
 }
 
-export default isProd ? list.map((item) => {return '/codehershk'+item}) : list
-
+export default isProd ? list.map((item) => {return ('/codehershk'+item)}) : list
