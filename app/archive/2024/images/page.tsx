@@ -12,7 +12,9 @@ export default function AllImagesPage() {
 
   // Load all images dynamically
   useEffect(() => {
-    setPhotos(all(-1, false)); // Loads all images - no shuffle for faster
+    // Loads all images (no shuffle). 
+    // Adjust the second parameter to true if you want random shuffle.
+    setPhotos(all(-1, false)); 
   }, []);
 
   // Open modal
@@ -26,16 +28,13 @@ export default function AllImagesPage() {
     setIsModalOpen(false);
   };
 
-  // 🔥 Listen for ESC key to close modal
+  // Listen for ESC key to close modal
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeModal();
     };
-
     window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
@@ -50,30 +49,66 @@ export default function AllImagesPage() {
         </p>
       </section>
 
-      {/* Image Grid */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {/* Responsive Image Grid */}
+      <section
+        className="
+          grid 
+          grid-cols-1                /* 1 column on extra-small screens */
+          sm:grid-cols-2             /* 2 columns on small screens (≥640px) */
+          md:grid-cols-3             /* 3 columns on medium screens (≥768px) */
+          lg:grid-cols-4             /* 4 columns on large screens (≥1024px) */
+          gap-4
+        "
+      >
         {photos.map((src, index) => (
-          <div key={index} className="relative w-full aspect-[4/3] cursor-pointer" onClick={() => openModal(src)}>
-            <Image src={src} alt={`Event Photo ${index + 1}`} fill className="object-cover rounded-lg shadow-md hover:opacity-80 transition" />
+          <div
+            key={index}
+            className="relative w-full aspect-[4/3] cursor-pointer"
+            onClick={() => openModal(src)}
+          >
+            <Image
+              src={src}
+              alt={`Event Photo ${index + 1}`}
+              fill
+              className="object-cover rounded-lg shadow-md hover:opacity-80 transition"
+            />
           </div>
         ))}
       </section>
 
       {/* Back to Archive Link */}
       <div className="flex justify-center pt-6">
-        <Link href="/archive/" className="px-6 py-2 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-all">
+        <Link
+          href="/archive/"
+          className="px-6 py-2 bg-primary-500 text-white font-medium rounded-lg hover:bg-primary-600 transition-all"
+        >
           Back to Archive
         </Link>
       </div>
 
       {/* Full-Screen Image Modal */}
       {isModalOpen && (
-        <div className="fixed !m-0 inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50" onClick={closeModal}>
-          <button className="fixed top-6 right-6 bg-white text-black px-4 py-2 rounded-full text-lg font-bold hover:bg-gray-200 z-50" onClick={closeModal}>
+        <div
+          className="fixed !m-0 inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          onClick={closeModal}
+        >
+          <button
+            className="fixed top-6 right-6 bg-white text-black px-4 py-2 rounded-full text-lg font-bold hover:bg-gray-200 z-50"
+            onClick={closeModal}
+          >
             ✕
           </button>
-          <div className="relative p-4 max-w-5xl w-full" onClick={(e) => e.stopPropagation()}>
-            <Image src={selectedImage} alt="Full View" width={1600} height={900} className="rounded-lg shadow-lg max-w-full max-h-screen object-contain" />
+          <div
+            className="relative p-4 max-w-5xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={selectedImage}
+              alt="Full View"
+              width={1600}
+              height={900}
+              className="rounded-lg shadow-lg max-w-full max-h-screen object-contain"
+            />
           </div>
         </div>
       )}

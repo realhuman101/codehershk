@@ -26,6 +26,7 @@ export default function EventArchivePage() {
 
   // Handle "Escape" key press to close modal
   useEffect(() => {
+    // Demo: get 30 images from your "pics24" or "all"
     setPhotos(all(30));
 
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -66,13 +67,14 @@ export default function EventArchivePage() {
             pauseOnHover: true,
             arrows: true,
             pagination: true,
-            perPage: 4,
+            // Start with 1 image per page on the smallest screens
+            perPage: 1,
             mediaQuery: "min",
+            // Upgrade to more images as screen size increases
             breakpoints: {
-              640: { perPage: 1 }, // Small screens → 1 image at a time
-              768: { perPage: 2 }, // Medium screens → 2 images
-              1024: { perPage: 3 }, // Large screens → 3 images
-              1280: { perPage: 4 }, // Extra large screens → 4 images
+              640: { perPage: 2 },  // >=640px
+              768: { perPage: 3 },  // >=768px
+              1024: { perPage: 4 }, // >=1024px
             },
           }}
           aria-label="Event Photos"
@@ -83,7 +85,12 @@ export default function EventArchivePage() {
                 className="relative w-full h-72 bg-gray-200 rounded-lg cursor-pointer"
                 onClick={() => openModal(src)}
               >
-                <Image src={src} alt="2024 Event Photo" fill className="object-cover rounded-lg" />
+                <Image
+                  src={src}
+                  alt="2024 Event Photo"
+                  fill
+                  className="object-cover rounded-lg"
+                />
               </div>
             </SplideSlide>
           ))}
@@ -91,12 +98,12 @@ export default function EventArchivePage() {
 
         {/* CTA Links */}
         <div className="flex space-x-3 pt-4">
-        <Link
+          <Link
             href="/archive/2024/images"
             className="px-4 py-2 bg-accent-500 text-white font-medium rounded-lg hover:bg-accent-600 transition-all"
           >
             View All Event Photos
-        </Link>
+          </Link>
 
           <Link
             href="/archive/2024/workshops"
