@@ -53,10 +53,10 @@ export default function AllImagesPage() {
       <section
         className="
           grid 
-          grid-cols-1                /* 1 column on extra-small screens */
-          sm:grid-cols-2             /* 2 columns on small screens (≥640px) */
-          md:grid-cols-3             /* 3 columns on medium screens (≥768px) */
-          lg:grid-cols-4             /* 4 columns on large screens (≥1024px) */
+          grid-cols-1               
+          sm:grid-cols-
+          md:grid-cols-3 
+          lg:grid-cols-4  
           gap-4
         "
       >

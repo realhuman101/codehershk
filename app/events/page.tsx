@@ -4,7 +4,6 @@ import Link from "next/link";
 export default function CurrentEventsPage() {
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
-      {/* Title */}
       <section className="pt-8">
         <h1 className="text-4xl font-extrabold tracking-wide text-text-900 sm:text-6xl mb-2">
           Current Events
@@ -14,9 +13,7 @@ export default function CurrentEventsPage() {
         </p>
       </section>
 
-      {/* Event Cards (Updated with Sign-Up Buttons) */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* CodeHers 2025 Event */}
         <div className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-2">
           <h3 className="text-xl font-bold text-text-900">CodeHers 2025</h3>
           <p className="text-text-700">
@@ -42,7 +39,6 @@ export default function CurrentEventsPage() {
           </div>
         </div>
 
-        {/* Hackathon Event */}
         <div className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-2">
           <h3 className="text-xl font-bold text-text-900">Hackathon</h3>
           <p className="text-text-700">
@@ -69,28 +65,40 @@ export default function CurrentEventsPage() {
         </div>
       </section>
 
-      {/* “Catching Up with CodeHers” (Instagram) */}
-      <section className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-4">
+      <section className="p-6 bg-secondary-500/10 rounded-xl shadow space-y-6">
         <h2 className="text-2xl font-bold text-text-900">
-          Catching Up with CodeHers
+          CodeHers Highlights
         </h2>
-        <p className="text-text-700">Check out our latest Instagram post!</p>
-        <div className="relative w-full h-80 bg-gray-200 rounded-lg overflow-hidden">
-          {/* Replace with an actual Instagram embed or your own photo */}
-          <Image
-            src="/instagram-placeholder.jpg"
-            alt="Instagram Post"
-            fill
-            className="object-cover"
+        <p className="text-text-700">
+          Watch our latest highlights video, and check out our promotional materials!
+        </p>
+
+        <div className="relative w-full overflow-hidden rounded-lg" style={{ paddingBottom: "56.25%" }}>
+          <iframe
+            src="https://www.youtube.com/embed/zgT_fEx4XTk"
+            title="CodeHers Highlights 2025"
+            frameBorder="0"
+            allowFullScreen
+            className="absolute top-0 left-0 w-full h-full"
           />
         </div>
-        <Link
-          href="https://instagram.com/codehershk"
-          target="_blank"
-          className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-accent-500 hover:bg-accent-600 transition-all"
-        >
-          See More on Instagram
-        </Link>
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Link
+            href="/files/codehers-promo-poster.pdf"
+            target="_blank"
+            className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-accent-500 hover:bg-accent-600 transition-all"
+          >
+            View Promotional Poster
+          </Link>
+          <Link
+            href="/files/codehers-introduction.pdf"
+            target="_blank"
+            className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-accent-500 hover:bg-accent-600 transition-all"
+          >
+            Introduction to Schools
+          </Link>
+        </div>
       </section>
     </main>
   );
