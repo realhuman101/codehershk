@@ -55,7 +55,7 @@ export default function WorkshopsSection() {
           Workshops
         </h2>
         <h5 className="block text-2xl leading-6 tracking-wide text-center text-text-800">
-          Choose from over 25 workshops from a range of experts from tech-related companies and professors to our own members!
+          Choose from over 40 workshops from a range of experts from tech-related companies and professors to our own members!
         </h5>
       </div>
       <div className="flex flex-wrap justify-center gap-12">

@@ -90,7 +90,7 @@ export default function Home() {
                 Time & Date
               </h5>
               <p className="text-text-600 text-lg">
-                Saturday 15th March 2025 10:00am to 4:00pm
+                Saturday 15th March 2025 11:00am to 5:00pm
               </p>
             </div>
             <div> 

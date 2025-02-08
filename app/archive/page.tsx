@@ -53,7 +53,7 @@ export default function EventArchivePage() {
         <h2 className="text-2xl font-bold text-text-900">Archive for 2024</h2>
         <p className="text-text-600 italic">Fun Fact: Our first event!</p>
         <p className="text-text-700">
-          Participants: <strong>300</strong> &middot; Workshops: <strong>40</strong>
+          Participants: <strong>300</strong> &middot; Workshops: <strong>25</strong>
         </p>
 
         {/* 📸 Responsive Image Carousel */}

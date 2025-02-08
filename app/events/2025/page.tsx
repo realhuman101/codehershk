@@ -84,7 +84,7 @@ export default function CodeHers2025Page() {
               <h5 className="block text-xl font-medium leading-6 tracking-wide text-text-900">
                 Cost
               </h5>
-              <p className="text-text-600 text-lg">Free!</p>
+              <p className="text-text-600 text-lg">Free! Includes free lunch and merchandise!</p>
             </div>
             <div>
               <h5 className="block text-xl font-medium leading-6 tracking-wide text-text-900">
