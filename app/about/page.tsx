@@ -9,31 +9,12 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css";
 
+import StudentPics from "../components/StudentPics"
+
 export default function AboutPage() {
   const isProd = process.env.NODE_ENV === "production";
 
   // Carousel data. Add or remove entries as needed.
-  const organizingTeams = [
-    {
-      school: "Victoria Shanghai Academy",
-      imagePath: "/team/students/.jpg",
-      description:
-        "VSA’s representatives are passionate about AI, data science, and bridging gender gaps across HK’s tech community.",
-    },
-    {
-      school: "King George V School",
-      imagePath: "/team/students/KGV.png",
-      description:
-        "The KGV team focuses on web development and hackathons, inspiring girls to learn by building real projects.",
-    },
-    {
-      school: "Sha Tin College (STC)",
-      imagePath: "/team/students/STC.jpg",
-      description:
-        "At STC, the Code For Life group fosters a supportive environment to spark girls’ interest in coding.",
-    },
-    // Add more as needed...
-  ];
 
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
