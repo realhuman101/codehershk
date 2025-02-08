@@ -182,7 +182,7 @@ function SchoolCredits() {
         </h5>
       </div>
 
-      <div className="grid w-full grid-cols-2 gap-3 px-8 py-6 rounded-lg lg:gap-1 bg-secondary-500/10 lg:h-32 justify-items-center md:grid-cols-3 lg:flex lg:flex-row lg:space-x-3 lg:items-center lg:justify-center xl:justify-around">
+      <div className="grid overflow-hidden w-full grid-cols-2 gap-3 px-8 py-6 rounded-lg lg:gap-1 bg-secondary-500/10 lg:h-32 justify-items-center md:grid-cols-3 lg:flex lg:flex-row lg:space-x-3 lg:items-center lg:justify-center xl:justify-around">
         <Splide
           options={{
             type: 'loop',
