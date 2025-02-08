@@ -15,11 +15,11 @@ export default function Navbar() {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <Image
-              src={isProd ? '/codehershk/logos/CodeHers v2-1 color on transparent.png' : "/logos/CodeHers v2-1 color on transparent.png"}
+              src={isProd ? '/codehershk/logos/CodeHers 2025 logo.png' : "/logos/CodeHers 2025 logo.png"}
               width="0"
               height="0"
               sizes="100vw"
-              className="w-auto h-8"
+              className="w-auto h-10"
               alt="Code(H)ers logo"
             />
           </Link>
