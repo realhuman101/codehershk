@@ -4,18 +4,62 @@ import { useState, ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-// Splide carousel imports
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
 import "@splidejs/react-splide/css";
 
-import StudentPics from "../components/StudentPics"
+import StudentPics from "../components/StudentPics";
+
+/** Flip-card component using Framer Motion. */
+function FlipCard({ front, back }: { front: string; back: string }) {
+  const [flipped, setFlipped] = useState(false);
+
+  const handleMouseEnter = () => setFlipped(true);
+  const handleMouseLeave = () => setFlipped(false);
+  const handleClick = () => setFlipped(!flipped);
+
+  return (
+    <div
+      className="flex items-center justify-center p-4 bg-white rounded-lg shadow w-[260px] h-[260px] cursor-pointer"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
+    >
+      <motion.div
+        className="relative w-[260px] h-[260px]"
+        style={{ perspective: 1000 }}
+      >
+        <motion.div
+          className="relative w-full h-full"
+          animate={{ rotateY: flipped ? 180 : 0 }}
+          transition={{ duration: 0.5 }}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          {/* FRONT */}
+          <motion.div
+            className="absolute w-full h-full rounded-md"
+            style={{ backfaceVisibility: "hidden" }}
+          >
+            <Image src={front} alt="Front" fill className="object-contain" />
+          </motion.div>
+
+          {/* BACK */}
+          <motion.div
+            className="absolute w-full h-full rounded-md"
+            style={{
+              transform: "rotateY(180deg)",
+              backfaceVisibility: "hidden",
+            }}
+          >
+            <Image src={back} alt="Back" fill className="object-contain" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
 
 export default function AboutPage() {
-  const isProd = process.env.NODE_ENV === "production";
-
-  // Carousel data. Add or remove entries as needed.
-
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
       {/* Title Section */}
@@ -25,81 +69,53 @@ export default function AboutPage() {
         </h1>
         <p className="text-text-700 text-lg">
           We are CodeHers, a team of girls from different schools brought
-          together by our passion for technology. Our mission is to empower
-          the next generation of women in STEM.
+          together by our passion for technology. Our mission is to empower the
+          next generation of women in STEM.
         </p>
       </section>
 
-      {/*
-      -------------------------------------------------------------------------------------
-      BACKSTORY SECTION (COMMENTED OUT)
-      -------------------------------------------------------------------------------------
-      <section className="mt-4 space-y-4">
-        <h2 className="text-2xl font-bold text-text-800">Our Backstory</h2>
-        <p className="text-text-600 leading-relaxed">
-          [ ... original backstory content ... ]
-        </p>
-        <p className="text-text-600 leading-relaxed">
-          [ ... more text about the creation of CodeHers ... ]
-        </p>
-      </section>
-      -------------------------------------------------------------------------------------
-      */}
+      {/* Our Team Section: side-by-side on md+ screens */}
+      <section className="bg-secondary-500/10 p-6 rounded-xl shadow flex flex-col md:flex-row gap-3 items-start">
+        {/* Left side text */}
+        <div className="md:w-3/5 space-y-4">
+          <h2 className="text-2xl font-bold text-text-800">Our Team</h2>
+          <p className="text-text-600">
+            We’re a collective of passionate students from international and
+            local schools across Hong Kong. Our team brings a wide range of
+            talents—from web dev to AI—to create events that spark curiosity
+            and empower more girls to explore coding.
+          </p>
+          <p className="text-text-600">
+            Scroll through our carousel to see the faces behind CodeHers! Hover
+            (or tap on mobile) to flip each card and reveal the back side.
+          </p>
+        </div>
 
-      {/* Our Core Team Carousel */}
-      <section className="mt-4 space-y-4">
-        <h2 className="text-2xl font-bold text-text-800">Our Core Team</h2>
-        <p className="text-text-600">
-          Meet the amazing people from various schools who make CodeHers
-          possible! Each group brings unique skills and passion for tech.
-        </p>
-
-        <Splide
-          options={{
-            type: "loop",
-            drag: "free",
-            gap: "1rem",
-            autoWidth: true,
-            arrows: true,
-            pagination: false,
-            autoScroll: {
-              speed: 1,
-              pauseOnHover: true,
-              pauseOnFocus: false,
-            },
-          }}
-          extensions={{ AutoScroll }}
-          className="overflow-hidden py-2"
-        >
-          {organizingTeams.map((team, idx) => (
-            <SplideSlide key={idx} className="flex justify-center">
-              <div className="bg-white rounded-lg shadow p-4 w-72 h-[330px] flex flex-col items-center">
-                <div className="relative w-full h-48 overflow-hidden rounded">
-                  <Image
-                    src={
-                      isProd
-                        ? "/codehershk/" + team.imagePath.replace(/^\/+/, "")
-                        : team.imagePath
-                    }
-                    alt={`Group from ${team.school}`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-text-900 mt-3">
-                  {team.school}
-                </h3>
-                <p className="text-text-600 text-sm mt-1 text-center">
-                  {team.description}
-                </p>
-              </div>
-            </SplideSlide>
-          ))}
-        </Splide>
+        {/* Right side: smaller max width so it's not huge */}
+        <div className="w-[260px] rounded-lg m-auto md:m-0 md:ml-auto overflow-hidden">
+          <Splide
+            options={{
+              type: "loop",
+              autoplay: true,
+              interval: 3000,
+              arrows: true,
+              pagination: false,
+              speed: 900,
+              gap: "10px"
+            }}
+            className="overflow-hidden"
+          >
+            {StudentPics.map((pic, idx) => (
+              <SplideSlide key={idx} className="w-fit">
+                <FlipCard front={pic.front} back={pic.back} />
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
       </section>
 
       {/* Vision / Mission / Values */}
-      <section className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-3">
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="p-6 bg-white shadow rounded-lg">
           <h3 className="text-xl font-semibold text-text-900 mb-2">
             Our Vision
@@ -127,7 +143,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* FAQ Section with MotionJS */}
+      {/* FAQ */}
       <section className="pb-4">
         <h2 className="text-2xl font-bold text-text-900 mb-4">
           Frequently Asked Questions
@@ -135,7 +151,7 @@ export default function AboutPage() {
         <div className="flex flex-col space-y-2">
           <FAQItem
             question="Who can join CodeHers events?"
-            answer="Any high-school Hong Kong student who identifies as female (or non-binary) is welcome to join our events! We won't be restricting signups, however we prioritize slots for those who fit this demographic."
+            answer="Any high-school HK student identifying as female/non-binary is welcome! We do prioritize slots for that demographic."
           />
           <FAQItem
             question="Do I need prior coding experience?"
@@ -155,11 +171,11 @@ export default function AboutPage() {
           />
           <FAQItem
             question="What are the prerequisites to attending your event?"
-            answer="As long as you have a laptop with WiFi access and are a high-school student in Hong Kong, you can attend our event! No knowledge or other prerequisites are required!"
+            answer="As long as you have a laptop with WiFi access and are a high-school student in Hong Kong, you can attend our event! No knowledge or other prerequisites are required."
           />
           <FAQItem
             question="I want to help support your event as a student, how can I help?"
-            answer="We're glad to hear you're interested! Look out for a posting for support staff, photographers, or workshop hosts through your school's bulletin or at our Instagram. If you'd like to join our organizing team (restricted to students of our partner schools), speak to a CS teacher or teacher rep at your school, or reach out to us for more info."
+            answer="We're glad to hear you're interested! Look out for postings for support staff, photographers, or workshop hosts in your school's bulletin or on our Instagram. If you'd like to join our organizing team (restricted to partner schools), speak to a CS teacher or rep at your school or contact us for more info."
           />
           <FAQItem
             question="Why run a girls-only event?"
@@ -199,7 +215,7 @@ export default function AboutPage() {
   );
 }
 
-/** FAQItem - expands/collapses on click */
+/** Slide-down FAQ component with framer-motion. */
 function FAQItem({ question, answer }: { question: string; answer: ReactNode }) {
   const [open, setOpen] = useState(false);
 
@@ -212,7 +228,6 @@ function FAQItem({ question, answer }: { question: string; answer: ReactNode }) 
         <span className="text-text-900 font-semibold">{question}</span>
         <span className="text-text-600 ml-2">{open ? "−" : "+"}</span>
       </button>
-
       <AnimatePresence>
         {open && (
           <motion.div
