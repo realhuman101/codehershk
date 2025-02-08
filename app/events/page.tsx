@@ -92,7 +92,7 @@ export default function CurrentEventsPage() {
             View Promotional Poster
           </Link>
           <Link
-            href="/files/codehers-introduction.pdf"
+            href="/about/school-introduction/"
             target="_blank"
             className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-accent-500 hover:bg-accent-600 transition-all"
           >
