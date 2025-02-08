@@ -114,7 +114,7 @@ export default function Home() {
               <h5 className="block text-xl font-medium leading-6 tracking-wide text-text-900">
                 Cost
               </h5>
-              <p className="text-text-600 text-lg">Free!</p>
+              <p className="text-text-600 text-lg">Free! Includes free lunch and merchandise!</p>
             </div>
           </div>
         <div className="grow md:w-1/2 lg:w-1/3 flex flex-col justify-center h-72 md:h-auto">
