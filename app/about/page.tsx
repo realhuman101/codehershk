@@ -15,20 +15,20 @@ export default function AboutPage() {
   // Carousel data. Add or remove entries as needed.
   const organizingTeams = [
     {
-      school: "Victoria Shanghai Academy (VSA)",
-      imagePath: "/team/team-vsa.jpg",
+      school: "Victoria Shanghai Academy",
+      imagePath: "/team/students/.jpg",
       description:
         "VSA’s representatives are passionate about AI, data science, and bridging gender gaps across HK’s tech community.",
     },
     {
-      school: "King George V School (KGV)",
-      imagePath: "/team/team-kgv.jpg",
+      school: "King George V School",
+      imagePath: "/team/students/KGV.png",
       description:
         "The KGV team focuses on web development and hackathons, inspiring girls to learn by building real projects.",
     },
     {
       school: "Sha Tin College (STC)",
-      imagePath: "/team/team-stc.jpg",
+      imagePath: "/team/students/STC.jpg",
       description:
         "At STC, the Code For Life group fosters a supportive environment to spark girls’ interest in coding.",
     },
@@ -69,7 +69,7 @@ export default function AboutPage() {
       <section className="mt-4 space-y-4">
         <h2 className="text-2xl font-bold text-text-800">Our Core Team</h2>
         <p className="text-text-600">
-          Meet some of the amazing teams from various schools who make CodeHers
+          Meet the amazing people from various schools who make CodeHers
           possible! Each group brings unique skills and passion for tech.
         </p>
 
@@ -80,10 +80,11 @@ export default function AboutPage() {
             gap: "1rem",
             autoWidth: true,
             arrows: true,
-            pagination: true,
+            pagination: false,
             autoScroll: {
               speed: 1,
-              pauseOnFocus: true,
+              pauseOnHover: true,
+              pauseOnFocus: false,
             },
           }}
           extensions={{ AutoScroll }}
