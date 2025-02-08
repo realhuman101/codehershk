@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CurrentEventsPage() {
-  const isProd = process.env.NODE_ENV === 'production';
-
   return (
     <main className="flex flex-col px-6 md:px-16 lg:px-24 2xl:px-64 xl:px-48 space-y-10">
       <section className="pt-8">
@@ -87,14 +85,14 @@ export default function CurrentEventsPage() {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
-            href={isProd ? '/codehershk' + "/marketing/CodeHers 2025 Poster.pdf" : "/marketing/CodeHers 2025 Poster.pdf"}
+            href="/marketing/CodeHers 2025 Poster.pdf"
             target="_blank"
             className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-accent-500 hover:bg-accent-600 transition-all"
           >
             View Promotional Poster
           </Link>
           <Link
-            href={isProd ? '/codehershk' + "/about/school-introduction/" : "/about/school-introduction/"}
+            href="/about/school-introduction/"
             target="_blank"
             className="inline-block px-4 py-2 text-base font-medium leading-loose text-white rounded-lg bg-accent-500 hover:bg-accent-600 transition-all"
           >

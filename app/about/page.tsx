@@ -68,7 +68,7 @@ export default function AboutPage() {
           About Us
         </h1>
         <p className="text-text-700 text-lg">
-          We are CodeHers, a team of girls from different schools brought
+          We are CodeHers, a team of girls from 11 different schools across Hong Kong brought
           together by our passion for technology. Our mission is to empower the
           next generation of women in STEM.
         </p>
