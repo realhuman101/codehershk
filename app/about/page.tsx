@@ -80,8 +80,7 @@ export default function AboutPage() {
         <div className="md:w-3/5 space-y-4">
           <h2 className="text-2xl font-bold text-text-800">Our Team</h2>
           <p className="text-text-600">
-            We’re a collective of passionate students from international and
-            local schools across Hong Kong. Our team brings a wide range of
+            We’re a collective of passionate students from various schools across Hong Kong. Our team brings a wide range of
             talents—from web dev to AI—to create events that spark curiosity
             and empower more girls to explore coding.
           </p>
