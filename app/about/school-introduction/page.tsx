@@ -18,7 +18,7 @@ export default function IntroductionToSchoolsPage() {
             </b>
           </h1>
           <h2 className="text-3xl font-bold lg:text-4xl xl:text-5xl text-text-800">
-            Bringing Tech Education to <i><b>Her</b></i> School
+            Empowering Women in Tech at <i><b>Your</b></i> School
           </h2>
 
           <p className="text-text-700 text-lg">
