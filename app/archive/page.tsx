@@ -11,7 +11,7 @@ import pics24, { all } from "../components/pics24";
 export default function EventArchivePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-  const [photos, setPhotos] = useState<Array<string>>(pics24);
+  const [photos, setPhotos] = useState<Array<string>>([]);
 
   // Open Modal with Selected Image
   const openModal = (image: string) => {
@@ -53,7 +53,7 @@ export default function EventArchivePage() {
         <h2 className="text-2xl font-bold text-text-900">Archive for 2024</h2>
         <p className="text-text-600 italic">Fun Fact: Our first event!</p>
         <p className="text-text-700">
-          Participants: <strong>300</strong> &middot; Workshops: <strong>25</strong>
+          Participants: <strong>300</strong> &middot; Workshops: <strong>40</strong>
         </p>
 
         {/* 📸 Responsive Image Carousel */}

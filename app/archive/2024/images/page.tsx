@@ -8,7 +8,7 @@ import pics24, { all } from "../../../components/pics24";
 export default function AllImagesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-  const [photos, setPhotos] = useState<Array<string>>(pics24);
+  const [photos, setPhotos] = useState<Array<string>>([]);
 
   // Load all images dynamically
   useEffect(() => {
