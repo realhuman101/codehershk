@@ -8,14 +8,9 @@ import pics24, { all } from "../../../components/pics24";
 export default function AllImagesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-  const [photos, setPhotos] = useState<Array<string>>([]);
+  const [photos, setPhotos] = useState<Array<string>>(all(-1, false));
 
   // Load all images dynamically
-  useEffect(() => {
-    // Loads all images (no shuffle). 
-    // Adjust the second parameter to true if you want random shuffle.
-    setPhotos(all(-1, false)); 
-  }, []);
 
   // Open modal
   const openModal = (image: string) => {

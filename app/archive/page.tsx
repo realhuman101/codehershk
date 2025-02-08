@@ -11,7 +11,7 @@ import pics24, { all } from "../components/pics24";
 export default function EventArchivePage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
-  const [photos, setPhotos] = useState<Array<string>>([]);
+  const [photos, setPhotos] = useState<Array<string>>(all(30));
 
   // Open Modal with Selected Image
   const openModal = (image: string) => {
@@ -27,7 +27,6 @@ export default function EventArchivePage() {
   // Handle "Escape" key press to close modal
   useEffect(() => {
     // Demo: get 30 images from your "pics24" or "all"
-    setPhotos(all(30));
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeModal();
